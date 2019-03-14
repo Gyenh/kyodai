@@ -29,12 +29,12 @@
     <div class="navbar-end">
       <div class="navbar-item">
         <div class="buttons">
-          <a class="button is-primary">
-            <strong>Inscription</strong>
-          </a>
-          <a class="button is-light">
-            Connexion
-          </a>
+          <% if user_signed_in? %>
+            <%= link_to  "Se déconnecter", destroy_user_session_path, method: :delete, class: "button is-danger" %>
+          <% else %>
+            <%= link_to 'Inscription', new_user_registration_path, class: 'button is-primary' %>
+            <%= link_to 'Connexion', new_user_session_path, class: 'button is-light' %>
+          <% end %>
         </div>
       </div>
     </div>

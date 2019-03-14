@@ -30,10 +30,18 @@
       <div class="navbar-item">
         <div class="buttons">
           <% if user_signed_in? %>
+            <%= current_user.username %>
+              <% if current_user.image == nil %>
+              <% else %>
+                <%= image_tag current_user.image %>
+              <%end%>
             <%= link_to  "Se déconnecter", destroy_user_session_path, method: :delete, class: "button is-danger" %>
           <% else %>
             <%= link_to 'Inscription', new_user_registration_path, class: 'button is-primary' %>
             <%= link_to 'Connexion', new_user_session_path, class: 'button is-light' %>
+
+            <%= button_to 'Inscription avec Facebook', user_facebook_omniauth_authorize_path, class:"button is-info fa fa-facebook-square fa-sm" %>
+
           <% end %>
         </div>
       </div>

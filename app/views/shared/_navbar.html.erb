@@ -1,4 +1,4 @@
-<nav class="navbar is-gray" role="navigation" aria-label="main navigation">
+<nav class="navbar is-gray is-fixed-top" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
       <%= link_to image_tag("logokyo.png", height: '100', width: '100', class: "navbar-item logo"), root_path %>
 
@@ -12,35 +12,36 @@
   <div id="navbarBasicExample" class="navbar-menu">
     <div class="navbar-start">
 
-      <a class="navbar-item">
-        Accueil
-      </a>
+      <%= link_to "Accueil", root_path, class: "navbar-item" %>
 
-      <a class="navbar-item">
-        Articles
-      </a>
+      <%= link_to "Articles",root_path, class: "navbar-item" %>
 
-      <a class="navbar-item">
-        Musiques
-      </a>
+      <%= link_to "Musiques",root_path, class: "navbar-item" %>
 
   </div>
 
     <div class="navbar-end">
-      <div class="navbar-item">
-        <div class="buttons">
+      <div id="navbar-connections-buttons" class="navbar-item">
+        <div id="connections-buttons" class="buttons">
           <% if user_signed_in? %>
-            <%= current_user.username %>
-              <% if current_user.image == nil %>
-              <% else %>
-                <%= image_tag current_user.image %>
-              <%end%>
-            <%= link_to  "Se déconnecter", destroy_user_session_path, method: :delete, class: "button is-danger" %>
+
+            <%= link_to edit_user_registration_path do %>
+              <div class="button navbar-item">
+                <% if current_user.image == nil %>
+                <% else %>
+                  <%= image_tag current_user.image, class: "image is-32x32" %>
+                <%end%>
+              <%= current_user.username %>
+              </div>
+            <%end%>
+            <%= link_to  "Se déconnecter", destroy_user_session_path, method: :delete, class: "button is-danger navbar-item" %>
+
           <% else %>
+
             <%= link_to 'Inscription', new_user_registration_path, class: 'button is-primary' %>
             <%= link_to 'Connexion', new_user_session_path, class: 'button is-light' %>
 
-            <%= button_to 'Inscription avec Facebook', user_facebook_omniauth_authorize_path, class:"button is-info fa fa-facebook-square fa-sm" %>
+            <%= button_to 'Utiliser Facebook', user_facebook_omniauth_authorize_path, class:"button is-info fa fa-facebook-square fa-sm" %>
 
           <% end %>
         </div>

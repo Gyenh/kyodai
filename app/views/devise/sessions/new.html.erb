@@ -1,28 +1,51 @@
-<h2>Log in</h2>
+ <section class="hero is-fullheight">
+        <div class="hero-body">
+            <div class="container has-text-centered">
+                <div class="column is-4 is-offset-4">
+                    <h3 class="title has-text-grey">Login</h3>
+                    <p class="subtitle has-text-grey">Veuillez vous connecter</p>
+                    <div class="box">
+                        <figure class="avatar">
+                            <%= image_tag("logokyo.png", height: '128', width: '128')%>
+                        </figure>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :login %><br />
-    <%= f.text_field :login, autofocus: true, autocomplete: "Pseudo ou mail" %>
-  </div>
+                        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+                        <form>
+                            <div class="field">
+                                <div class="control">
+                                    <%= f.text_field :login, autofocus: true, placeholder:"Pseudo ou email", class:"input is-large" %>
+                                </div>
+                            </div>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
+                            <div class="field">
+                                <div class="control">
+                                    <%= f.password_field :password, autocomplete: "current-password", class:"input is-large", placeholder:"Mot de passe" %>
+                                </div>
+                            </div>
 
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
-    </div>
-  <% end %>
+                            <% if devise_mapping.rememberable? %>
+                            <div class="field">
+                                <%= f.check_box :remember_me, class:"checkbox" %>
+                                <%= f.label :remember_me, "Se souvenir de moi" %>
+                            </div>
+                            <% end %>
 
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
-<% end %>
+                            <%= f.submit "Se connecter", class:"button is-block is-info is-large is-fullwidth" %> <br>
 
-<h2>Ou</h2>
-<button class="button is-info fa fa-facebook-square fa-sm"> <%= link_to 'Connexion avec Facebook', user_facebook_omniauth_authorize_path%></button><br>
-<%= render "devise/shared/links" %>
+                            <%= link_to user_facebook_omniauth_authorize_path, class:"button is-info is-large is-fullwidth" do %>
+                              <%= fa_icon "facebook-square 2x" %>&nbsp;<p>Connexion</p>
+                            <% end %>
+
+                        </form>
+                        <% end %>
+
+                    </div>
+
+                    <p class="has-text-grey">
+                      <%= render "devise/shared/links" %>
+                    </p>
+
+                </div>
+            </div>
+        </div>
+</section>

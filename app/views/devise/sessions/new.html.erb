@@ -12,15 +12,15 @@
                         <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
                         <form>
                             <div class="field">
-                                <div class="control">
-                                    <%= f.text_field :login, autofocus: true, placeholder:"Pseudo ou email", class:"input is-large" %>
-                                </div>
+															<div class="control">
+																	<%= f.text_field :login, autofocus: true, placeholder:"Pseudo ou email", class:"input is-large" %>
+															</div>
                             </div>
 
                             <div class="field">
-                                <div class="control">
-                                    <%= f.password_field :password, autocomplete: "current-password", class:"input is-large", placeholder:"Mot de passe" %>
-                                </div>
+															<div class="control">
+                                <%= f.password_field :password, autocomplete: "current-password", class:"input is-large", placeholder:"Mot de passe" %>
+															</div>
                             </div>
 
                             <% if devise_mapping.rememberable? %>

@@ -18,6 +18,7 @@ gem 'uglifier', '>= 1.3.0'
 
 gem "font-awesome-rails"
 gem "bulma-rails", "~> 0.7.4"
+gem 'jquery-rails', '~> 4.3', '>= 4.3.3'
 gem 'devise'
 gem 'omniauth'
 gem 'omniauth-facebook'

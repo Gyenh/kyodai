@@ -1,496 +1,121 @@
-<h2>Mon Profil</h2>
-
-  <% if current_user.image.blank? %>
-    <figure class="image is-128x128">
-      <%= image_tag("128x128.png", class: "is-rounded") %>
-    </figure>
-  <% else %>
-    <figure class="image is-128x128">
-      <%= image_tag current_user.image + "?type=large", class: "is-rounded"%>
-    </figure>
-  <% end %>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
-    <% end %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Update" %>
-  </div>
-<% end %>
-
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-<%= link_to "Retourner à l'accueil", root_path, class:"button" %>
-
-  <div class="container profile">
-    <div class="section profile-heading">
-      <div class="columns">
-        <div class="column is-2">
-          <% if current_user.image.blank? %>
-            <figure class="image is-128x128">
-              <%= image_tag("128x128.png", class: "is-rounded") %>
-            </figure>
-          <% else %>
-            <figure class="image is-128x128">
-              <%= image_tag current_user.image + "?type=large", class: "is-rounded"%>
-            </figure>
-          <% end %>
-        </div>
-        <div class="column is-4 name">
-          <p>
-            <span class="title is-bold"><%= current_user.username %></span>
-          </p>
-          <p class="tagline">The users profile bio would go here, of course. It could be two lines</p>
-        </div>
-        <div class="column is-2 followers has-text-centered">
-          <p class="stat-val">129k</p>
-          <p class="stat-key">followers</p>
-        </div>
-        <div class="column is-2 following has-text-centered">
-          <p class="stat-val">2k</p>
-          <p class="stat-key">following</p>
-        </div>
-        <div class="column is-2 likes has-text-centered">
-          <p class="stat-val">29</p>
-          <p class="stat-key">likes</p>
-        </div>
+<div class="container profile">
+  <div class="section profile-heading">
+    <div class="columns">
+      <div class="column is-2">
+        <% if current_user.image.blank? %>
+          <figure class="image is-128x128">
+            <%= image_tag("128x128.png", class: "is-rounded") %>
+          </figure>
+        <% else %>
+          <figure class="image is-128x128">
+            <%= image_tag current_user.image + "?type=large", class: "is-rounded"%>
+          </figure>
+        <% end %>
       </div>
+
+      <div class="column is-4 name">
+        <p>
+          <span class="title is-bold"><%= current_user.username %></span>
+        </p>
+        <p class="tagline">Votre mini-bio sera ici qui tiendra sur deux lignes uniquement.</p>
+      </div>
+
+      <div class="column is-2 followers has-text-centered">
+        <p class="stat-val">0</p>
+        <p class="stat-key">followers</p>
+      </div>
+
+      <div class="column is-2 following has-text-centered">
+        <p class="stat-val">0</p>
+        <p class="stat-key">following</p>
+      </div>
+
+      <div class="column is-2 likes has-text-centered">
+        <p class="stat-val">0</p>
+        <p class="stat-key">likes</p>
+      </div>
+
     </div>
   </div>
+</div>
 
 <div class="spacer"></div>
 
 <div class="profile-options">
   <div class="tabs is-fullwidth">
     <ul>
-      <li class="link is-active"><a><span class="icon"><i class="fa fa-list"></i></span> <span>My Lists</span></a></li>
-      <li class="link"><a><span class="icon"><i class="fa fa-heart"></i></span> <span>My Likes</span></a></li>
-      <li class="link"><a><span class="icon"><i class="fa fa-th"></i></span> <span>My Posts</span></a></li>
-      <li class="link"><a><span class="icon"><i class="fa fa-bookmark"></i></span> <span>My Bookmarks</span></a></li>
+      <li class="link is-active"><a><span class="icon"><i class="fa fa-list"></i></span> <span>Modifier mes infos</span></a></li>
+      <li class="link"><a><span class="icon"><i class="fa fa-th"></i></span> <span>Mes Posts</span></a></li>
+      <li class="link"><a><span class="icon"><i class="fa fa-bookmark"></i></span> <span>Mes articles</span></a></li>
+      <li class="link"><a><span class="icon"><i class="fa fa-heart"></i></span> <span>Mes Vidéos favorites</span></a></li>
     </ul>
   </div>
 </div>
 
 
-<div class="box">
-  <div class="columns">
-    <div class="column is-3">
-      <div class="card">
-        <div class="card-image">
-          <figure class="image is-4by3">
-            <img src="http://placehold.it/300x225" alt="">
-          </figure>
+
+  <section class="hero is-fullheight">
+    <div class="hero-body">
+      <div class="container has-text-centered">
+        <div class="column is-4 is-offset-4">
+            <div class="box">
+                <figure class="avatar">
+                    <%= image_tag("logokyo.png", height: '128', width: '128')%>
+                </figure>
+
+                <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+                  <%= render "devise/shared/error_messages", resource: resource %>
+                <form>
+                  <div class="field">
+                    <div class="control">
+                      <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"input is-large" %>
+                    </div>
+                  </div>
+
+                  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+                    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+                  <% end %>
+
+                  <div class="field">
+                    <div class="control has-text-centered">
+                      <%= f.password_field :password, autocomplete: "new-password", class:"input is-large", placeholder: "Nouveau mot de passe"%>
+                        <% if @minimum_password_length %>
+                        <br />
+                        <em><%= @minimum_password_length %> caractères minimum</em>
+                        <% end %><br>
+                      <i>(laisser vide si vous ne souhaitez pas modifier votre mot de passe)</i>
+                    </div>
+                  </div>
+
+                  <div class="field">
+                    <div class="control">
+                      <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"input is-large", placeholder:"Saisir encore le MDP" %>
+                    </div>
+                  </div>
+
+                  <div class="field">
+                    <div class="control has-text-centered">
+                      <%= f.password_field :current_password, autocomplete: "current-password", class:"input is-large", placeholder:"Mot de passe actuel" %>
+                      <i>(Veuillez saisir votre mot de passe actuel pour valider les modifications)</i>
+                    </div>
+                  </div>
+
+                  <%= f.submit "Mettre à jour", class:"button is-block is-info is-large is-fullwidth" %>
+                </form>
+                <% end %>
+            </div>
+
+            <div class="box">
+              <h3 class="subtitle has-text-danger">Vous souhaitez supprimer votre compte ?</h3>
+                <div class="buttons is-centered">
+                  <%= link_to fa_icon("times", text:"Destruction", class:"text-muted pull-left"), registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class:"button is-danger is-outlined" %>
+              </div>
+            </div>
         </div>
-        <div class="card-content">
-          <div class="content">
-            <span class="tag is-dark">#webdev</span>
-            <strong class="timestamp">2 d</strong>
-          </div>
-        </div>
-        <footer class="card-footer">
-          <a class="card-footer-item">Save</a>
-          <a class="card-footer-item">Edit</a>
-          <a class="card-footer-item">Delete</a>
-        </footer>
+        <%= link_to fa_icon("home", text:"Retourner à l'accueil", class:"text-muted pull-left"), root_path, class:"button" %>
       </div>
-      <br>
-      <div class="card">
-        <div class="card-image">
-          <figure class="image is-4by3">
-            <img src="http://placehold.it/300x225" alt="">
-          </figure>
-        </div>
-        <div class="card-content">
-          <div class="content">
-            <span class="tag is-dark">#webdev</span>
-            <strong class="timestamp">2 d</strong>
-          </div>
-        </div>
-        <footer class="card-footer">
-          <a class="card-footer-item">Save</a>
-          <a class="card-footer-item">Edit</a>
-          <a class="card-footer-item">Delete</a>
-        </footer>
-      </div>
-      <br>
-      <div class="card">
-        <div class="card-image">
-          <figure class="image is-4by3">
-            <img src="http://placehold.it/300x225" alt="">
-          </figure>
-        </div>
-        <div class="card-content">
-          <div class="content">
-            <span class="tag is-dark">#webdev</span>
-            <strong class="timestamp">2 d</strong>
-          </div>
-        </div>
-        <footer class="card-footer">
-          <a class="card-footer-item">Save</a>
-          <a class="card-footer-item">Edit</a>
-          <a class="card-footer-item">Delete</a>
-        </footer>
-      </div>
-      <br>
-      <div class="card">
-        <div class="card-image">
-          <figure class="image is-4by3">
-            <img src="http://placehold.it/300x225" alt="">
-          </figure>
-        </div>
-        <div class="card-content">
-          <div class="content">
-            <span class="tag is-dark">#webdev</span>
-            <strong class="timestamp">2 d</strong>
-          </div>
-        </div>
-        <footer class="card-footer">
-          <a class="card-footer-item">Save</a>
-          <a class="card-footer-item">Edit</a>
-          <a class="card-footer-item">Delete</a>
-        </footer>
-      </div>
-      <br>
-      <div class="card">
-        <div class="card-image">
-          <figure class="image is-4by3">
-            <img src="http://placehold.it/300x225" alt="">
-          </figure>
-        </div>
-        <div class="card-content">
-          <div class="content">
-            <span class="tag is-dark">#webdev</span>
-            <strong class="timestamp">2 d</strong>
-          </div>
-        </div>
-        <footer class="card-footer">
-          <a class="card-footer-item">Save</a>
-          <a class="card-footer-item">Edit</a>
-          <a class="card-footer-item">Delete</a>
-        </footer>
-      </div>
-      <br>
     </div>
-    <div class="column is-3">
-      <div class="card">
-        <div class="card-image">
-          <figure class="image is-4by3">
-            <img src="http://placehold.it/300x225" alt="">
-          </figure>
-        </div>
-        <div class="card-content">
-          <div class="content">
-            <span class="tag is-dark">#webdev</span>
-            <strong class="timestamp">2 d</strong>
-          </div>
-        </div>
-        <footer class="card-footer">
-          <a class="card-footer-item">Save</a>
-          <a class="card-footer-item">Edit</a>
-          <a class="card-footer-item">Delete</a>
-        </footer>
-      </div>
-      <br>
-      <div class="card">
-        <div class="card-image">
-          <figure class="image is-4by3">
-            <img src="http://placehold.it/300x225" alt="">
-          </figure>
-        </div>
-        <div class="card-content">
-          <div class="content">
-            <span class="tag is-dark">#webdev</span>
-            <strong class="timestamp">2 d</strong>
-          </div>
-        </div>
-        <footer class="card-footer">
-          <a class="card-footer-item">Save</a>
-          <a class="card-footer-item">Edit</a>
-          <a class="card-footer-item">Delete</a>
-        </footer>
-      </div>
-      <br>
-      <div class="card">
-        <div class="card-image">
-          <figure class="image is-4by3">
-            <img src="http://placehold.it/300x225" alt="">
-          </figure>
-        </div>
-        <div class="card-content">
-          <div class="content">
-            <span class="tag is-dark">#webdev</span>
-            <strong class="timestamp">2 d</strong>
-          </div>
-        </div>
-        <footer class="card-footer">
-          <a class="card-footer-item">Save</a>
-          <a class="card-footer-item">Edit</a>
-          <a class="card-footer-item">Delete</a>
-        </footer>
-      </div>
-      <br>
-      <div class="card">
-        <div class="card-image">
-          <figure class="image is-4by3">
-            <img src="http://placehold.it/300x225" alt="">
-          </figure>
-        </div>
-        <div class="card-content">
-          <div class="content">
-            <span class="tag is-dark">#webdev</span>
-            <strong class="timestamp">2 d</strong>
-          </div>
-        </div>
-        <footer class="card-footer">
-          <a class="card-footer-item">Save</a>
-          <a class="card-footer-item">Edit</a>
-          <a class="card-footer-item">Delete</a>
-        </footer>
-      </div>
-      <br>
-      <div class="card">
-        <div class="card-image">
-          <figure class="image is-4by3">
-            <img src="http://placehold.it/300x225" alt="">
-          </figure>
-        </div>
-        <div class="card-content">
-          <div class="content">
-            <span class="tag is-dark">#webdev</span>
-            <strong class="timestamp">2 d</strong>
-          </div>
-        </div>
-        <footer class="card-footer">
-          <a class="card-footer-item">Save</a>
-          <a class="card-footer-item">Edit</a>
-          <a class="card-footer-item">Delete</a>
-        </footer>
-      </div>
-      <br>
-    </div>
-    <div class="column is-3">
-      <div class="card">
-        <div class="card-image">
-          <figure class="image is-4by3">
-            <img src="http://placehold.it/300x225" alt="">
-          </figure>
-        </div>
-        <div class="card-content">
-          <div class="content">
-            <span class="tag is-dark">#webdev</span>
-            <strong class="timestamp">2 d</strong>
-          </div>
-        </div>
-        <footer class="card-footer">
-          <a class="card-footer-item">Save</a>
-          <a class="card-footer-item">Edit</a>
-          <a class="card-footer-item">Delete</a>
-        </footer>
-      </div>
-      <br>
-      <div class="card">
-        <div class="card-image">
-          <figure class="image is-4by3">
-            <img src="http://placehold.it/300x225" alt="">
-          </figure>
-        </div>
-        <div class="card-content">
-          <div class="content">
-            <span class="tag is-dark">#webdev</span>
-            <strong class="timestamp">2 d</strong>
-          </div>
-        </div>
-        <footer class="card-footer">
-          <a class="card-footer-item">Save</a>
-          <a class="card-footer-item">Edit</a>
-          <a class="card-footer-item">Delete</a>
-        </footer>
-      </div>
-      <br>
-      <div class="card">
-        <div class="card-image">
-          <figure class="image is-4by3">
-            <img src="http://placehold.it/300x225" alt="">
-          </figure>
-        </div>
-        <div class="card-content">
-          <div class="content">
-            <span class="tag is-dark">#webdev</span>
-            <strong class="timestamp">2 d</strong>
-          </div>
-        </div>
-        <footer class="card-footer">
-          <a class="card-footer-item">Save</a>
-          <a class="card-footer-item">Edit</a>
-          <a class="card-footer-item">Delete</a>
-        </footer>
-      </div>
-      <br>
-      <div class="card">
-        <div class="card-image">
-          <figure class="image is-4by3">
-            <img src="http://placehold.it/300x225" alt="">
-          </figure>
-        </div>
-        <div class="card-content">
-          <div class="content">
-            <span class="tag is-dark">#webdev</span>
-            <strong class="timestamp">2 d</strong>
-          </div>
-        </div>
-        <footer class="card-footer">
-          <a class="card-footer-item">Save</a>
-          <a class="card-footer-item">Edit</a>
-          <a class="card-footer-item">Delete</a>
-        </footer>
-      </div>
-      <br>
-      <div class="card">
-        <div class="card-image">
-          <figure class="image is-4by3">
-            <img src="http://placehold.it/300x225" alt="">
-          </figure>
-        </div>
-        <div class="card-content">
-          <div class="content">
-            <span class="tag is-dark">#webdev</span>
-            <strong class="timestamp">2 d</strong>
-          </div>
-        </div>
-        <footer class="card-footer">
-          <a class="card-footer-item">Save</a>
-          <a class="card-footer-item">Edit</a>
-          <a class="card-footer-item">Delete</a>
-        </footer>
-      </div>
-      <br>
-    </div>
-    <div class="column is-3">
-      <div class="card">
-        <div class="card-image">
-          <figure class="image is-4by3">
-            <img src="http://placehold.it/300x225" alt="">
-          </figure>
-        </div>
-        <div class="card-content">
-          <div class="content">
-            <span class="tag is-dark">#webdev</span>
-            <strong class="timestamp">2 d</strong>
-          </div>
-        </div>
-        <footer class="card-footer">
-          <a class="card-footer-item">Save</a>
-          <a class="card-footer-item">Edit</a>
-          <a class="card-footer-item">Delete</a>
-        </footer>
-      </div>
-      <br>
-      <div class="card">
-        <div class="card-image">
-          <figure class="image is-4by3">
-            <img src="http://placehold.it/300x225" alt="">
-          </figure>
-        </div>
-        <div class="card-content">
-          <div class="content">
-            <span class="tag is-dark">#webdev</span>
-            <strong class="timestamp">2 d</strong>
-          </div>
-        </div>
-        <footer class="card-footer">
-          <a class="card-footer-item">Save</a>
-          <a class="card-footer-item">Edit</a>
-          <a class="card-footer-item">Delete</a>
-        </footer>
-      </div>
-      <br>
-      <div class="card">
-        <div class="card-image">
-          <figure class="image is-4by3">
-            <img src="http://placehold.it/300x225" alt="">
-          </figure>
-        </div>
-        <div class="card-content">
-          <div class="content">
-            <span class="tag is-dark">#webdev</span>
-            <strong class="timestamp">2 d</strong>
-          </div>
-        </div>
-        <footer class="card-footer">
-          <a class="card-footer-item">Save</a>
-          <a class="card-footer-item">Edit</a>
-          <a class="card-footer-item">Delete</a>
-        </footer>
-      </div>
-      <br>
-      <div class="card">
-        <div class="card-image">
-          <figure class="image is-4by3">
-            <img src="http://placehold.it/300x225" alt="">
-          </figure>
-        </div>
-        <div class="card-content">
-          <div class="content">
-            <span class="tag is-dark">#webdev</span>
-            <strong class="timestamp">2 d</strong>
-          </div>
-        </div>
-        <footer class="card-footer">
-          <a class="card-footer-item">Save</a>
-          <a class="card-footer-item">Edit</a>
-          <a class="card-footer-item">Delete</a>
-        </footer>
-      </div>
-      <br>
-      <div class="card">
-        <div class="card-image">
-          <figure class="image is-4by3">
-            <img src="http://placehold.it/300x225" alt="">
-          </figure>
-        </div>
-        <div class="card-content">
-          <div class="content">
-            <span class="tag is-dark">#webdev</span>
-            <strong class="timestamp">2 d</strong>
-          </div>
-        </div>
-        <footer class="card-footer">
-          <a class="card-footer-item">Save</a>
-          <a class="card-footer-item">Edit</a>
-          <a class="card-footer-item">Delete</a>
-        </footer>
-      </div>
-      <br>
-    </div>
-  </div>
-</div>
+  </section>
+  <%#= render "shared/posts" %>
+
+

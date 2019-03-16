@@ -49,12 +49,12 @@
           <% else %>
             <div class="dropdown is-hoverable">
               <div class="dropdown-trigger">
-                <%= link_to 'Connexion', new_user_session_path, class: 'button', "aria-haspopup": true, "aria-controls": "dropdown-menu4" %>
+                <%= link_to fa_icon("connectdevelop", text:"Connexion", class:"text-muted pull-left"), new_user_session_path, class: 'button', "aria-haspopup": true, "aria-controls": "dropdown-menu4" %>
               </div>
               <div class="dropdown-menu" id="dropdown-menu4" role="menu">
                 <div class="dropdown-content">
                   <div class="dropdown-item">
-                    <%= link_to 'Connexion', new_user_session_path, class: 'button is-light is-fullwidth' %>
+                    <%= link_to fa_icon("connectdevelop", text:"Connexion", class:"text-muted pull-left"), new_user_session_path, class: 'button is-light is-fullwidth' %>
                     <%= link_to user_facebook_omniauth_authorize_path, class:"button is-info is-fullwidth" do %>
                       <%= fa_icon "facebook-square 2x" , text: "Facebook", class: "text-muted pull-left"%>
                     <% end %>
@@ -63,7 +63,7 @@
               </div>
             </div>
             &nbsp;&nbsp;
-            <%= link_to 'Inscription', new_user_registration_path, class: 'button is-primary' %>
+            <%= link_to fa_icon("user-plus", text:"Inscription", class:"text-muted pull-left"), new_user_registration_path, class: 'button is-primary' %>
           <% end %>
         </div>
       </div>

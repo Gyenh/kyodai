@@ -22,6 +22,8 @@ gem 'jquery-rails', '~> 4.3', '>= 4.3.3'
 gem 'devise'
 gem 'omniauth'
 gem 'omniauth-facebook'
+# Use for create Articles
+gem "ckeditor"
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'

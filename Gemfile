@@ -24,6 +24,8 @@ gem 'omniauth'
 gem 'omniauth-facebook'
 # Use for create Articles
 gem "ckeditor"
+# Add image to 
+gem "paperclip"
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'

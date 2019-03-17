@@ -83,6 +83,20 @@ Rails.application.configure do
   # require 'syslog/logger'
   # config.logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new 'app-name')
 
+  # ActionMailer Config
+  config.action_mailer.default_url_options = { :host => 'https://kyodai.herokuapp.com'}
+
+  ActionMailer::Base.delivery_method = :smtp
+  ActionMailer::Base.smtp_settings = {
+  address: 'smtp.sendgrid.net',
+  port: "25",
+  domain: 'heroku.com',
+  user_name: ENV["SENDGRID_USERNAME"],
+  password: ENV["SENDGRID_PASSWORD"],
+  authentication: 'plain',
+  enable_starttls_auto: true
+  }
+
   if ENV["RAILS_LOG_TO_STDOUT"].present?
     logger           = ActiveSupport::Logger.new(STDOUT)
     logger.formatter = config.log_formatter

@@ -1,60 +1,60 @@
 <section class="hero is-fullheight">
   <div class="hero-body">
-      <div class="container has-text-centered">
-          <div class="column is-4 is-offset-4">
-              <h3 class="title has-text-grey">POUR NOUS REJOINDRE</h3>
-              <p class="subtitle has-text-grey">Merci de remplir les champs</p>
-              <div class="box">
-                  <figure class="avatar">
-                      <%= image_tag("logokyo.png", height: '128', width: '128')%>
-                  </figure>
+    <div class="container has-text-centered">
+      <div class="column is-4 is-offset-4">
+        <h3 class="title has-text-grey">Inscription</h3>
+        <p class="subtitle has-text-grey">Merci de remplir les champs</p>
+          <div class="box">
+            <figure class="avatar">
+                <%= image_tag("logokyo.png", height: '128', width: '128')%>
+            </figure>
 
-                    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-                    <%= render "devise/shared/error_messages", resource: resource %>
-                    <form>
-                      <div class="field">
-                          <div class="control">
-                            <%= f.text_field :username, autofocus: true, autocomplete: "Pseudo", placeholder:"Pseudo", class:"input is-large" %>
-                          </div>
-                      </div>
-
-                      <div class="field">
-                        <div class="control">
-                          <%= f.email_field :email, autocomplete: "email",class:"input is-large", placeholder:"Email" %>
-                        </div>
-                      </div>
-
-                        <div class="field">
-                            <div class="control">
-                            <%= f.password_field :password, autocomplete: "new-password", placeholder:"Mot de passe", class:"input is-large" %>
-                            <% if @minimum_password_length %>
-                              <em>(<%= @minimum_password_length %> caractères minimum)</em>
-                            <% end %><br />
-                          </div>
-                        </div>
-
-                          <div class="field">
-                            <div class="control">
-                              <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder:"Confirmer le mot de passe", class:"input is-large" %>
-                            </div>
-                          </div>
-
-                      <%= f.button fa_icon("rocket", text:"Inscription"), class:"button is-block is-primary is-large is-fullwidth" %> <br>
-
-                      <%= link_to user_facebook_omniauth_authorize_path, class:"button is-info is-large is-fullwidth" do %>
-                        <%= fa_icon "facebook-square 2x", text: "Inscription", class: "text-muted pull-left" %>
-                      <% end %>
-
-                  </form>
-                  <% end %>
-
+            <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+            <%= render "devise/shared/error_messages", resource: resource %>
+            <form>
+              <div class="field">
+                <div class="control">
+                  <%= f.text_field :username, autofocus: true, autocomplete: "Pseudo", placeholder:"Pseudo", class:"input is-large" %>
+                </div>
               </div>
 
-              <p class="has-text-grey">
-                <%= render "devise/shared/links" %>
-              </p>
+              <div class="field">
+                <div class="control">
+                  <%= f.email_field :email, autocomplete: "email",class:"input is-large", placeholder:"Email" %>
+                </div>
+              </div>
+
+              <div class="field">
+                  <div class="control">
+                  <%= f.password_field :password, autocomplete: "new-password", placeholder:"Mot de passe", class:"input is-large" %>
+                  <% if @minimum_password_length %>
+                    <em>(<%= @minimum_password_length %> caractères minimum)</em>
+                  <% end %><br />
+                </div>
+              </div>
+
+              <div class="field">
+                <div class="control">
+                  <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder:"Confirmer le mot de passe", class:"input is-large" %>
+                </div>
+              </div>
+
+              <%= f.button fa_icon("rocket", text:"Inscription"), class:"button is-block is-primary is-large is-fullwidth" %> <br>
+
+              <%= link_to user_facebook_omniauth_authorize_path, class:"button is-info is-large is-fullwidth" do %>
+                <%= fa_icon "facebook-square 2x", text: "Inscription", class: "text-muted pull-left" %>
+              <% end %>
+
+            </form>
+            <% end %>
 
           </div>
-      </div>
+
+          <p class="has-text-grey">
+            <%= render "devise/shared/links" %>
+          </p>
+
+        </div>
+    </div>
   </div>
 </section>

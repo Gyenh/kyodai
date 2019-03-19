@@ -1,0 +1,18 @@
+<div class="section">
+  <%= form_for @post do |f| %>
+  <div class="field">
+    <div class="control">
+      <%= f.label :post, "Un titre court" %>
+      <%= f.text_field :title, autofocus: true, class: "input" %>
+    </div>
+  </div>
+
+  <div class="field">
+    <div class="control">
+      <%= f.label :post, "Une description ?" %>
+      <%= f.text_area :content, class: "textarea" %>
+    </div>
+  </div>
+  <%= f.submit "Partager ma musique", class:"button is-primary" %>
+  <% end %>
+</div>

@@ -1,10 +1,16 @@
 <section class="section">
   <div class="container">
+
     <h1 class="title">
       <%= @post.title %>
     </h1>
+
     <div class="content">
       <%= @post.content %>
     </div>
+    <%= link_to "Edit", edit_post_path(@post), class:"button" %>
+    <%= link_to "Delete", post_path(@post), method: :delete, data: { confirm: "Are you sure ?"}, class:"button is-danger" %>
   </div>
 </section>
+
+<section class="comments"></section>

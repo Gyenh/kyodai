@@ -10,3 +10,11 @@
   margin: 5%;
 }
 
+.navbar-item.fucking-list:hover {
+  text-decoration: underline hsl(171, 100%, 41%);
+}
+
+a.navbar-item:hover {
+  color: black !important;
+  font-size: 20px;
+}

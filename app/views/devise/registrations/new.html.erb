@@ -14,19 +14,19 @@
             <form>
               <div class="field">
                 <div class="control">
-                  <%= f.text_field :username, autofocus: true, autocomplete: "Pseudo", placeholder:"Pseudo", class:"input is-large" %>
+                  <%= f.text_field :username, autofocus: true, autocomplete: "Pseudo", placeholder:"Pseudo", class:"input is-primary is-large" %>
                 </div>
               </div>
 
               <div class="field">
                 <div class="control">
-                  <%= f.email_field :email, autocomplete: "email",class:"input is-large", placeholder:"Email" %>
+                  <%= f.email_field :email, autocomplete: "email",class:"input is-primary is-large", placeholder:"Email" %>
                 </div>
               </div>
 
               <div class="field">
                   <div class="control">
-                  <%= f.password_field :password, autocomplete: "new-password", placeholder:"Mot de passe", class:"input is-large" %>
+                  <%= f.password_field :password, autocomplete: "new-password", placeholder:"Mot de passe", class:"input is-primary is-large" %>
                   <% if @minimum_password_length %>
                     <em>(<%= @minimum_password_length %> caractères minimum)</em>
                   <% end %><br />
@@ -35,7 +35,7 @@
 
               <div class="field">
                 <div class="control">
-                  <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder:"Confirmer le mot de passe", class:"input is-large" %>
+                  <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder:"Confirmer le mot de passe", class:"input is-primary is-large" %>
                 </div>
               </div>
 

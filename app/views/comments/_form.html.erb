@@ -1,14 +1,7 @@
 <%= form_for([@post, @post.comments.build]) do |f| %>
   <div class="field">
     <div class="control">
-      <%= f.label :comment, "Un titre court" %>
-      <%= f.text_field :name, autofocus: true, class: "input" %>
-    </div>
-  </div>
-
-  <div class="field">
-    <div class="control">
-      <%= f.label :comment, "Une description ?" %>
+      <%= f.label :comment, "Un avis ?" %>
       <%= f.text_area :content, class: "textarea" %>
     </div>
   </div>

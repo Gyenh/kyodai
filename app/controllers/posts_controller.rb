@@ -11,8 +11,8 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.create(post_params)
-    @post.user_id = current_user.id
+    @post = Post.create(post_params.merge(user_id: current_user.id))
+
     if @post.save
 
       redirect_to @post
@@ -43,7 +43,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :content)
+    params.require(:post).permit(:title, :content, :link)
   end
 
   def find_post

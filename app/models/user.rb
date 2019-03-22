@@ -12,7 +12,7 @@ class User < ApplicationRecord
   devise :omniauthable, omniauth_providers: [:facebook]
 
   has_many :posts, dependent: :destroy
-  has_many :comments
+  has_many :comments, dependent: :destroy
 
   def self.find_first_by_auth_conditions(warden_conditions)
 

@@ -16,6 +16,5 @@
 //= require turbolinks
 //= require_tree .
 
-//=require loadingpage
 //=require navbar
 //=require flashes_messages

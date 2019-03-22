@@ -1,22 +1,19 @@
-<section class="section">
-  <div class="container">
-    <h1 class="title has-text-centered">Toutes les musiques partagées</h1>
-
-    <div class="level">
-
-      <div class="level-left">
-        <div class="level-item">
-          <div class="button"> Voir mes vidéos</div>
-        </div>
-      </div>
-
-      <div class="level-right">
-        <div class="level-item">
-          <%= link_to "New post", new_post_path, class:"button is-info"%>
-        </div>
-      </div>
-
+<section class="hero is-primary is-bold">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title is-1 has-text-centered">LES MUSIQUES PARTAGEES</h1>
     </div>
+  </div>
+
+  <div class="hero-foot">
+    <nav class="tabs is-boxed is-fullwidth">
+      <div class="container">
+        <ul>
+          <li><%= link_to fa_icon("eye", text:"Mes musiques", class:"text-muted pull-left"), root_path %></li></li>
+          <li><%= link_to fa_icon("plus-square", text:"Nouvelle musique", class:"text-muted pull-left"), new_post_path %></li>
+        </ul>
+      </div>
+    </nav>
   </div>
 </section>
 
@@ -53,9 +50,7 @@
           </div>
 
           <footer class="card-footer">
-            <%= link_to "See post", post_path(post), class:"card-footer-item" %>
-            <a href="#" class="card-footer-item">Edit</a>
-            <a href="#" class="card-footer-item">Delete</a>
+            <%= link_to fa_icon("plus", text:"Détails", class:"text-muted pull-left"), post_path(post), class:"card-footer-item button is-info" %>
           </footer>
 
         </div>

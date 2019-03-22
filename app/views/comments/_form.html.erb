@@ -1,9 +1,29 @@
 <%= form_for([@post, @post.comments.build]) do |f| %>
-  <div class="field">
-    <div class="control">
-      <%= f.label :comment, "Un avis ?" %>
-      <%= f.text_area :content, class: "textarea" %>
+  <article class="media">
+    <figure class="media-left">
+      <p class="image is-64x64">
+        <% if current_user.image.blank? %>
+          <%= image_tag("128x128.png") %>
+        <% else %>
+          <%= image_tag current_user.image + "?type=large"%>
+        <% end %>
+      </p>
+    </figure>
+
+    <div class="media-content">
+      <div class="field">
+        <p class="control">
+          <%= f.text_area :content, class: "textarea", placeholder:"Ajouter un commentaire..." %>
+        </p>
+      </div>
+
+      <nav class="level">
+        <div class="level-left">
+          <div class="level-item">
+            <%= f.submit "Publier", class:"button is-primary" %>
+          </div>
+        </div>
+      </nav>
     </div>
-  </div>
-  <%= f.submit "Publier", class:"button is-primary" %>
+  </article>
 <% end %>

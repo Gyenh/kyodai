@@ -1,11 +1,9 @@
 <section class="section">
   <div class="container">
-    <div class="level-item has-text-centered">
-      <iframe id="ytplayer" type="text/html" width="640" height="360"
+    <iframe id="ytplayer" type="text/html" width="640" height="360"
               src="http://www.youtube.com/embed/<%=@post.link%>?autoplay=0"
               frameborder="0">
-      </iframe>
-    </div>
+    </iframe>
 
     <h1 class="title">
       <%= @post.title %>
@@ -14,6 +12,7 @@
     <div class="content">
       <%= @post.content %>
     </div>
+
     <%= link_to "Edit", edit_post_path(@post), class:"button" %>
     <%= link_to "Delete", post_path(@post), method: :delete, data: { confirm: "Are you sure ?"}, class:"button is-danger" %>
   </div>
@@ -21,11 +20,11 @@
 
 <section class="section comments">
   <div class="container">
-    <h2 class="subtitle is-5"><strong><%= @post.comments.count %> Comments</strong></h2>
+    <h2 class="subtitle is-5"><strong class="button is-rounded"><%= @post.comments.count %> Commentaires</strong></h2>
     <%= render @post.comments %>
     <div class="comment-form">
       <hr />
-      <h3 class="subtitle is-3"> Leave a reply</h3>
+      <h3 class="subtitle is-4">Laisse ton avis</h3>
       <%= render "comments/form" %>
     </div>
   </div>

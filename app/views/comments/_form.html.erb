@@ -1,29 +1,30 @@
-<%= form_for([@post, @post.comments.build]) do |f| %>
-  <article class="media">
-    <figure class="media-left">
-      <p class="image is-64x64">
-        <% if current_user.image.blank? %>
-          <%= image_tag("128x128.png") %>
-        <% else %>
-          <%= image_tag current_user.image + "?type=large"%>
-        <% end %>
-      </p>
-    </figure>
-
-    <div class="media-content">
-      <div class="field">
-        <p class="control">
-          <%= f.text_area :content, class: "textarea", placeholder:"Ajouter un commentaire..." %>
+  <%= form_for([@post, @post.comments.build]) do |f| %>
+    <article class="media">
+      <figure class="media-left">
+        <p class="image is-64x64">
+          <% if user_signed_in? && current_user.image.blank? %>
+              <%= image_tag("128x128.png") %>
+          <% elsif user_signed_in? && current_user.image.any? %>
+              <%= image_tag current_user.image + "?type=large"%>
+          <% else %>
+          <% end %>
         </p>
-      </div>
+      </figure>
 
-      <nav class="level">
-        <div class="level-left">
-          <div class="level-item">
-            <%= f.submit "Publier", class:"button is-primary" %>
-          </div>
+      <div class="media-content">
+        <div class="field">
+          <p class="control">
+            <%= f.text_area :content, class: "textarea", placeholder:"Ajouter un commentaire..." %>
+          </p>
         </div>
-      </nav>
-    </div>
-  </article>
-<% end %>
+
+        <nav class="level">
+          <div class="level-left">
+            <div class="level-item">
+              <%= f.submit "Publier", class:"button is-primary" %>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </article>
+  <% end %>

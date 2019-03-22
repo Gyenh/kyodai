@@ -1,9 +1,23 @@
 <section class="section">
   <div class="columns is-desktop">
 <!-- DISPLAY LAST SHARED MUSIC -->
-    <div class="column is-8">
+    <div class="column">
       <div class="box">
         <h2 class="title has-text-centered has-text-dark"> Dernières musiques </h2>
+
+          <div class="level">
+            <div class="level-left">
+              <div class="level-item">
+                <%= link_to "Toutes les musiques", posts_path, class:"button"%>
+              </div>
+            </div>
+            <div class="level-right">
+              <div class="level-item">
+                <%= link_to "Partager une musique", new_post_path, class:"button is-info"%>
+              </div>
+            </div>
+          </div>
+
           <div class="column">
             <% @posts.each_slice(4) do |music| %>
             <div class="columns">
@@ -48,9 +62,20 @@
     </div>
 <!-- END SHARED MUSIC -->
 <!-- SECTION WITH THE LAST ARTICLES-->
-      <div class="column">
+      <div class="column is-one-quarter-fullhd">
         <div class="box">
           <h2 class="title has-text-centered has-text-dark"> Derniers articles </h2>
+          <div class="level">
+            <div class="level-left">
+              <div class="level-item">
+              </div>
+            </div>
+            <div class="level-right">
+              <div class="level-item">
+                <%= link_to "Ecrire un article", root_path, class:"button is-info"%>
+              </div>
+            </div>
+          </div>
           <div class="box">
             <article class="media">
               <div class="media-left">
@@ -70,17 +95,17 @@
                   <div class="level-left">
                     <a class="level-item" aria-label="reply">
                       <span class="icon is-small">
-                        <i class="fas fa-reply" aria-hidden="true"></i>
+                        <%= fa_icon "reply", aria: { hidden: true} %>
                       </span>
                     </a>
                     <a class="level-item" aria-label="retweet">
                       <span class="icon is-small">
-                        <i class="fas fa-retweet" aria-hidden="true"></i>
+                        <%= fa_icon "retweet", aria: { hidden: true} %>
                       </span>
                     </a>
                     <a class="level-item" aria-label="like">
                       <span class="icon is-small">
-                        <i class="fas fa-heart" aria-hidden="true"></i>
+                        <%= fa_icon "heart", aria: { hidden: true} %>
                       </span>
                     </a>
                   </div>

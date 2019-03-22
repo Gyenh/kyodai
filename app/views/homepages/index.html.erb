@@ -1,19 +1,32 @@
+<section class="hero is-medium is-primary is-bold">
+  <div class="hero-body">
+    <div class="container has-text-centered">
+      <h1 class="title">
+        Bienvenue chez KYÔDAÏ
+      </h1>
+      <h2 class="subtitle">
+        Du japonais 兄弟, qui veut dire frères et soeurs
+      </h2>
+    </div>
+  </div>
+</section>
+
 <section class="section">
   <div class="columns is-desktop">
 <!-- DISPLAY LAST SHARED MUSIC -->
     <div class="column">
       <div class="box">
-        <h2 class="title has-text-centered has-text-dark"> Dernières musiques </h2>
+        <h2 class="title has-text-centered has-text-grey-dark"> Dernières musiques </h2>
 
           <div class="level">
             <div class="level-left">
               <div class="level-item">
-                <%= link_to "Toutes les musiques", posts_path, class:"button"%>
+                <%= link_to "Toutes les musiques", posts_path, class:"button is-rounded"%>
               </div>
             </div>
             <div class="level-right">
               <div class="level-item">
-                <%= link_to "Partager une musique", new_post_path, class:"button is-info"%>
+                <%= link_to fa_icon("plus", text:"Partager une musique", class:"text-muted pull-left"), new_post_path, class:"button is-primary is-rounded"%>
               </div>
             </div>
           </div>
@@ -49,7 +62,7 @@
                     <span class="card-footer-item"><%= post.comments.count %> Commentaire(s)</span>
                   </div>
 
-                  <footer class="card-footer"><%= link_to "Voir", post_path(post), class:"button card-footer-item" %>
+                  <footer class="card-footer"><%= link_to fa_icon("eye", text:"Voir", class:"text-muted pull-left"), post_path(post), class:"button card-footer-item" %>
 
                 </div>
                 <!-- END CARD -->
@@ -58,13 +71,18 @@
             </div>
             <% end %>
         </div>
+
+        <div class="container is-fluid has-text-centered">
+            <%= link_to fa_icon("plus", text:"Voir plus", class:"text-muted pull-left"), posts_path, class:"button is-primary is-rounded" %>
+        </div>
+
       </div>
     </div>
 <!-- END SHARED MUSIC -->
 <!-- SECTION WITH THE LAST ARTICLES-->
       <div class="column is-one-quarter-fullhd">
         <div class="box">
-          <h2 class="title has-text-centered has-text-dark"> Derniers articles </h2>
+          <h2 class="title has-text-centered has-text-grey-dark"> Derniers articles </h2>
           <div class="level">
             <div class="level-left">
               <div class="level-item">
@@ -72,7 +90,7 @@
             </div>
             <div class="level-right">
               <div class="level-item">
-                <%= link_to "Ecrire un article", root_path, class:"button is-info"%>
+                <%= link_to "Ecrire un article", root_path, class:"button is-primary is-rounded"%>
               </div>
             </div>
           </div>

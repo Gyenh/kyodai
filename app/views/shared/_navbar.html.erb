@@ -31,7 +31,7 @@
                     <% else %>
                       <%= image_tag current_user.image, class: "image is-32x32" %>
                     <%end%>
-                    <%= current_user.username %>
+                    <%= current_user.username.capitalize %>
                   </div>
                 <%end%>
                 <div class="dropdown-menu" id="dropdown-menu4" role="menu">

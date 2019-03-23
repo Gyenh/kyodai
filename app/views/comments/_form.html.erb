@@ -4,7 +4,7 @@
         <p class="image is-64x64">
           <% if user_signed_in? && current_user.image.blank? %>
               <%= image_tag("128x128.png") %>
-          <% elsif user_signed_in? && current_user.image.any? %>
+          <% elsif user_signed_in? && current_user.image.present? %>
               <%= image_tag current_user.image + "?type=large"%>
           <% else %>
           <% end %>

@@ -25,7 +25,9 @@ class PostsController < ApplicationController
     end
   end
 
-  def show; end
+  def show
+      @random_post = Post.all.order(Arel.sql('random()')).limit(2)
+  end
 
   def update
     if @post.update(post_params)
@@ -62,7 +64,8 @@ class PostsController < ApplicationController
         %r(https?://www\.youtube\.com/watch\?v=(.*?)(&|#|$)),
         %r(https?://www\.youtube\.com/embed/(.*?)(\?|$)),
         %r(https?://www\.youtube\.com/v/(.*?)(#|\?|$)),
-        %r(https?://www\.youtube\.com/user/.*?#\w/\w/\w/\w/(.+)\b)
+        %r(https?://www\.youtube\.com/user/.*?#\w/\w/\w/\w/(.+)\b),
+        %r(https?://music\.youtube\.com/watch\?v=(.*?)(&|#|$))
       ]
 
     @url.strip!

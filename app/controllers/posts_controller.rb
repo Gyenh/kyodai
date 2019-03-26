@@ -26,7 +26,7 @@ class PostsController < ApplicationController
   end
 
   def show
-      @random_post = Post.all.order(Arel.sql('random()')).limit(2)
+      @random_post = Post.all.order(Arel.sql('random()')).limit(1)
   end
 
   def update

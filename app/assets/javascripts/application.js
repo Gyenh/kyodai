@@ -18,3 +18,4 @@
 
 //=require navbar
 //=require flashes_messages
+//=require usertabs

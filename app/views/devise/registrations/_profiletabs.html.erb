@@ -1,0 +1,65 @@
+<div class="profile-options">
+  <div class="tabs is-fullwidth" id="tabs">
+    <ul>
+      <li class="link is-active" data-tab="1">
+        <a>
+          <span class="icon">
+            <i class="fa fa-list"></i>
+          </span>
+          <span>
+            Modifier mes infos
+          </span>
+        </a>
+      </li>
+
+      <li class="link" data-tab="2">
+        <a>
+          <span class="icon">
+            <i class="fa fa-th"></i>
+          </span>
+          <span>
+            Mes Posts
+          </span>
+        </a>
+      </li>
+
+      <li class="link" data-tab="3">
+        <a>
+          <span class="icon">
+            <i class="fa fa-bookmark"></i>
+          </span>
+          <span>
+            Mes articles
+          </span>
+        </a>
+      </li>
+
+      <li class="link" data-tab="4">
+        <a>
+          <span class="icon">
+            <i class="fa fa-heart"></i>
+          </span>
+          <span>
+            Mes Vidéos favorites
+          </span>
+        </a>
+      </li>
+
+    </ul>
+  </div>
+</div>
+
+<ul id="tab-content">
+  <li class="is-active" data-content="1">
+    <%= render "useredit" %>
+  </li>
+  <li data-content="2">
+    <%= render "userposts" %>
+  </li>
+  <li data-content="3">
+
+  </li>
+  <li data-content="4">
+    Documents
+  </li>
+</ul>

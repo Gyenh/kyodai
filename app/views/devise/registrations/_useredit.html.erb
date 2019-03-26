@@ -1,0 +1,60 @@
+<section class="hero is-fullheight">
+  <div class="hero-body">
+    <div class="container has-text-centered">
+      <div class="column is-4 is-offset-4">
+        <div class="box">
+            <figure class="avatar">
+                <%= image_tag("logokyo.png", height: '128', width: '128')%>
+            </figure>
+
+            <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+              <%= render "devise/shared/error_messages", resource: resource %>
+            <form>
+              <div class="field">
+                <div class="control">
+                  <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"input is-large" %>
+                </div>
+              </div>
+
+              <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+                <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+              <% end %>
+
+              <div class="field">
+                <div class="control has-text-centered">
+                  <%= f.password_field :password, autocomplete: "new-password", class:"input is-large", placeholder: "Nouveau mot de passe"%>
+                    <% if @minimum_password_length %>
+                    <br />
+                    <em><%= @minimum_password_length %> caractères minimum</em>
+                    <% end %><br>
+                  <i>(laisser vide si vous ne souhaitez pas modifier votre mot de passe)</i>
+                </div>
+              </div>
+
+              <div class="field">
+                <div class="control">
+                  <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"input is-large", placeholder:"Saisir encore le MDP" %>
+                </div>
+              </div>
+
+              <div class="field">
+                <div class="control has-text-centered">
+                  <%= f.password_field :current_password, autocomplete: "current-password", class:"input is-large", placeholder:"Mot de passe actuel" %>
+                  <i>(Veuillez saisir votre mot de passe actuel pour valider les modifications)</i>
+                </div>
+              </div>
+
+              <%= f.submit "Mettre à jour", class:"button is-block is-primary is-large is-fullwidth" %>
+            </form>
+            <% end %>
+        </div>
+
+          <h3 class="subtitle has-text-danger">Vous souhaitez supprimer votre compte ?</h3>
+            <div class="buttons is-centered">
+              <%= link_to fa_icon("bomb", text:"Destruction", class:"text-muted pull-left"), registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class:"button is-danger is-outlined" %>
+          </div>
+      </div>
+      <%= link_to fa_icon("home", text:"Retourner à l'accueil", class:"text-muted pull-left"), root_path, class:"button" %>
+    </div>
+  </div>
+</section>

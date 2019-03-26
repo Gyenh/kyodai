@@ -1,0 +1,32 @@
+<section class="section">
+  <h2 class="title has-text-centered">
+    Mes posts
+  </h2>
+
+  <div class="columns">
+
+    <% current_user.posts.each do |post| %>
+    <div class="card bm--card-equal-height">
+      <div class="card-content">
+
+        <div class="media">
+          <div class="media-content has-text-centered">
+            <p class="title is-6"><%= post.title %></p>
+          </div>
+        </div>
+
+      </div>
+
+        <%= post.content %>
+
+          <%= post.created_at.strftime("Posté le %d/%m/%Y")  %>
+
+          <%= link_to "Edit", edit_post_path(post), class:"button" %>
+          <%= link_to "Delete", post_path(post), method: :delete, data: { confirm: "Are you sure ?"}, class:"button is-danger" %>
+
+
+    </div>
+
+    <% end %>
+  </div>
+</section>

@@ -3,6 +3,10 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 #kyodai-landing {
-  background-image: image-url('landing.png');
+
+
+  background: linear-gradient(to top, rgba(255,255,255,0) 20%,
+              rgba(255,255,255,1)), image-url('landing.jpg');
+
   background-size: cover;
 }

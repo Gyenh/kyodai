@@ -1,138 +1,46 @@
-<section class="hero is-medium is-primary is-bold">
-  <div class="hero-body">
-    <div class="container has-text-centered">
-      <h1 class="title">
-        Bienvenue chez KYÔDAÏ
-      </h1>
-      <h2 class="subtitle">
-        Du japonais 兄弟, qui veut dire frères et soeurs
-      </h2>
-    </div>
-  </div>
-</section>
-
-<section class="section">
-  <div class="columns is-desktop">
-<!-- DISPLAY LAST SHARED MUSIC -->
-    <div class="column">
-      <div class="box">
-        <h2 class="title has-text-centered has-text-grey-dark"> Dernières musiques </h2>
-
-          <div class="level">
-            <div class="level-left">
-              <div class="level-item">
-                <%= link_to "Toutes les musiques", posts_path, class:"button is-rounded"%>
-              </div>
-            </div>
-            <div class="level-right">
-              <div class="level-item">
-                <%= link_to fa_icon("plus", text:"Partager une musique", class:"text-muted pull-left"), new_post_path, class:"button is-primary is-rounded"%>
-              </div>
-            </div>
-          </div>
-
-          <div class="column">
-            <% @posts.each_slice(4) do |music| %>
-            <div class="columns">
-              <% music.each do |post| %>
-              <div class="column is-one-quarter">
-                <!-- CARD -->
-                <div class="card bm--card-equal-height">
-
-                  <div class="card-image">
-                    <figure class="image is-4by3">
-                      <%= image_tag("http://img.youtube.com/vi/#{post.link}/0.jpg") %>
-                    </figure>
-                  </div>
-
-                  <div class="card-content">
-                    <div class="media">
-                      <div class="media-content has-text-centered">
-                        <p class="title is-4 has-text-dark"><%= post.title %></p>
-                        <p class="subtitle is-6 has-text-dark"> Publié(e) par <%= post.user.username.capitalize %></p>
-                      </div>
-                    </div>
-                    <div class="content">
-                      <%= post.content %>
-                    </div>
-                  </div>
+<% if user_signed_in? %>
 
 
-                  <div class="card-footer">
-                    <span class="card-footer-item"><%= post.comments.count %> Commentaire(s)</span>
-                  </div>
+  <%= render "homepages/connectedindex" %>
 
-                  <footer class="card-footer"><%= link_to fa_icon("eye", text:"Voir", class:"text-muted pull-left"), post_path(post), class:"button card-footer-item" %>
+<% else %>
 
-                </div>
-                <!-- END CARD -->
-              </div>
-              <% end %>
-            </div>
-            <% end %>
-        </div>
+  <section id="kyodai-landing"class="hero is-fullheight">
+    <!-- Hero content: will be in the middle -->
+    <div class="hero-body">
+      <div class="container has-text-centered">
+        <figure class="avatar">
+          <%= image_tag("favicon.png", height: '100', width: '100')%>
+        </figure>
 
-        <div class="container is-fluid has-text-centered">
-            <%= link_to fa_icon("plus", text:"Voir plus", class:"text-muted pull-left"), posts_path, class:"button is-primary is-rounded" %>
-        </div>
+        <h1 class="title has-text-white">
+          KYÔDAÏ
+        </h1>
+
+        <h2 class="subtitle has-text-white">
+          Bienvenus<br>
+          Venez découvrir ou partager des musiques et articles !
+        </h2>
+
+          <%= link_to fa_icon("connectdevelop", text:"Connexion", class:"text-muted pull-left"), new_user_session_path, class: 'button is-rounded is-light is-medium' %>
+          <%= link_to fa_icon("user-plus", text:"Inscription", class:"text-muted pull-left"), new_user_registration_path, class: 'button is-rounded is-primary is-medium' %>
 
       </div>
     </div>
-<!-- END SHARED MUSIC -->
-<!-- SECTION WITH THE LAST ARTICLES-->
-      <div class="column is-one-quarter-fullhd">
-        <div class="box">
-          <h2 class="title has-text-centered has-text-grey-dark"> Derniers articles </h2>
-          <div class="level">
-            <div class="level-left">
-              <div class="level-item">
-              </div>
-            </div>
-            <div class="level-right">
-              <div class="level-item">
-                <%= link_to "Ecrire un article", root_path, class:"button is-primary is-rounded"%>
-              </div>
-            </div>
-          </div>
-          <div class="box">
-            <article class="media">
-              <div class="media-left">
-                <figure class="image is-64x64">
-                  <img src="https://versions.bulma.io/0.7.0/images/placeholders/128x128.png" alt="Image">
-                </figure>
-              </div>
-              <div class="media-content">
-                <div class="content">
-                  <p>
-                    <strong>Snak Oniboso</strong> <small>@estattendu</small> <small>merde</small>
-                    <br>
-                    On attend que monsieur Snak se mette au travail
-                  </p>
-                </div>
-                <nav class="level is-mobile">
-                  <div class="level-left">
-                    <a class="level-item" aria-label="reply">
-                      <span class="icon is-small">
-                        <%= fa_icon "reply", aria: { hidden: true} %>
-                      </span>
-                    </a>
-                    <a class="level-item" aria-label="retweet">
-                      <span class="icon is-small">
-                        <%= fa_icon "retweet", aria: { hidden: true} %>
-                      </span>
-                    </a>
-                    <a class="level-item" aria-label="like">
-                      <span class="icon is-small">
-                        <%= fa_icon "heart", aria: { hidden: true} %>
-                      </span>
-                    </a>
-                  </div>
-                </nav>
-              </div>
-            </article>
-          </div>
-        </div>
+
+    <div class="hero-foot">
+      <div class="mouse-container">
+        <a class="js-scrollTo" href="#page-2">
+          <span class="mouse-outer">
+            <span class="mouse-wheel"></span>
+          </span>
+        </a>
       </div>
-<!-- END ARTICLES SECTION -->
-  </div>
-</section>
+    </div>
+
+  </section>
+
+  <section id="page-2" class="hero is-fullheight">
+  </section>
+
+<% end %>

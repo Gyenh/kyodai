@@ -1,0 +1,210 @@
+<nav class="navbar is-gray" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <%= link_to image_tag("logokyo.png", height: '100', width: '100', class: "navbar-item logo"), root_path %>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      <%= link_to "Accueil", root_path, class: "navbar-item fucking-list" %>
+
+      <%= link_to "Musiques", posts_path, class: "navbar-item fucking-list" %>
+
+      <%= link_to "A venir",root_path, class: "navbar-item fucking-list" %>
+    </div>
+
+    <div class="navbar-end">
+      <div class="navbar-item">
+        <div class="buttons">
+          <% if user_signed_in? %>
+
+            <div class="dropdown is-hoverable">
+              <div class="dropdown-trigger">
+                <%= link_to edit_user_registration_path, "aria-haspopup": true, "aria-controls": "dropdown-menu4" do %>
+                  <div class="button">
+                    <% if current_user.image.blank? %>
+                    <% else %>
+                      <%= image_tag current_user.image, class: "image is-32x32" %>
+                    <%end%>
+                    <%= current_user.username.capitalize %>
+                  </div>
+                <%end%>
+                <div class="dropdown-menu" id="dropdown-menu4" role="menu">
+                  <div class="dropdown-content">
+                    <div class="dropdown-item">
+                      <%= link_to "Mon compte", edit_user_registration_path, class: 'button is-light is-fullwidth' %>
+                      <%= link_to "Se déconnecter", destroy_user_session_path, method: :delete, class: "button is-danger is-fullwidth" %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+          <% else %>
+            <div class="dropdown is-hoverable">
+              <div class="dropdown-trigger">
+                <%= link_to fa_icon("connectdevelop", text:"Connexion", class:"text-muted pull-left"), new_user_session_path, class: 'button', "aria-haspopup": true, "aria-controls": "dropdown-menu4" %>
+              </div>
+              <div class="dropdown-menu" id="dropdown-menu4" role="menu">
+                <div class="dropdown-content">
+                  <div class="dropdown-item">
+                    <%= link_to fa_icon("connectdevelop", text:"Connexion", class:"text-muted pull-left"), new_user_session_path, class: 'button is-light is-fullwidth' %>
+                    <%= link_to user_facebook_omniauth_authorize_path, class:"button is-info is-fullwidth" do %>
+                      <%= fa_icon "facebook-square 2x" , text: "Facebook", class: "text-muted pull-left"%>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+            </div>
+            &nbsp;&nbsp;
+            <%= link_to fa_icon("user-plus", text:"Inscription", class:"text-muted pull-left"), new_user_registration_path, class: 'button is-primary' %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+<section class="hero is-medium is-primary is-bold">
+  <div class="hero-body">
+    <div class="container has-text-centered">
+      <h1 class="title">
+        Bienvenue chez KYÔDAÏ
+      </h1>
+      <h2 class="subtitle">
+        Du japonais 兄弟, qui veut dire frères et soeurs
+      </h2>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="columns is-desktop">
+<!-- DISPLAY LAST SHARED MUSIC -->
+    <div class="column">
+      <div class="box">
+        <h2 class="title has-text-centered has-text-grey-dark"> Dernières musiques </h2>
+
+          <div class="level">
+            <div class="level-left">
+              <div class="level-item">
+                <%= link_to "Toutes les musiques", posts_path, class:"button is-rounded"%>
+              </div>
+            </div>
+            <div class="level-right">
+              <div class="level-item">
+                <%= link_to fa_icon("plus", text:"Partager une musique", class:"text-muted pull-left"), new_post_path, class:"button is-primary is-rounded"%>
+              </div>
+            </div>
+          </div>
+
+          <div class="column">
+            <% @posts.each_slice(4) do |music| %>
+            <div class="columns">
+              <% music.each do |post| %>
+              <div class="column is-one-quarter">
+                <!-- CARD -->
+                <div class="card bm--card-equal-height">
+
+                  <div class="card-image">
+                    <figure class="image is-4by3">
+                      <%= image_tag("http://img.youtube.com/vi/#{post.link}/0.jpg") %>
+                    </figure>
+                  </div>
+
+                  <div class="card-content">
+                    <div class="media">
+                      <div class="media-content has-text-centered">
+                        <p class="title is-4 has-text-dark"><%= post.title %></p>
+                        <p class="subtitle is-6 has-text-dark"> Publié(e) par <%= post.user.username.capitalize %></p>
+                      </div>
+                    </div>
+                    <div class="content">
+                      <%= post.content %>
+                    </div>
+                  </div>
+
+
+                  <div class="card-footer">
+                    <span class="card-footer-item"><%= post.comments.count %> Commentaire(s)</span>
+                  </div>
+
+                  <footer class="card-footer"><%= link_to fa_icon("eye", text:"Voir", class:"text-muted pull-left"), post_path(post), class:"button card-footer-item" %>
+
+                </div>
+                <!-- END CARD -->
+              </div>
+              <% end %>
+            </div>
+            <% end %>
+        </div>
+
+        <div class="container is-fluid has-text-centered">
+            <%= link_to fa_icon("plus", text:"Voir plus", class:"text-muted pull-left"), posts_path, class:"button is-primary is-rounded" %>
+        </div>
+
+      </div>
+    </div>
+<!-- END SHARED MUSIC -->
+<!-- SECTION WITH THE LAST ARTICLES-->
+      <div class="column is-one-quarter-fullhd">
+        <div class="box">
+          <h2 class="title has-text-centered has-text-grey-dark"> Derniers articles </h2>
+          <div class="level">
+            <div class="level-left">
+              <div class="level-item">
+              </div>
+            </div>
+            <div class="level-right">
+              <div class="level-item">
+                <%= link_to "Ecrire un article", root_path, class:"button is-primary is-rounded"%>
+              </div>
+            </div>
+          </div>
+          <div class="box">
+            <article class="media">
+              <div class="media-left">
+                <figure class="image is-64x64">
+                  <img src="https://versions.bulma.io/0.7.0/images/placeholders/128x128.png" alt="Image">
+                </figure>
+              </div>
+              <div class="media-content">
+                <div class="content">
+                  <p>
+                    <strong>Snak Oniboso</strong> <small>@estattendu</small> <small>merde</small>
+                    <br>
+                    On attend que monsieur Snak se mette au travail
+                  </p>
+                </div>
+                <nav class="level is-mobile">
+                  <div class="level-left">
+                    <a class="level-item" aria-label="reply">
+                      <span class="icon is-small">
+                        <%= fa_icon "reply", aria: { hidden: true} %>
+                      </span>
+                    </a>
+                    <a class="level-item" aria-label="retweet">
+                      <span class="icon is-small">
+                        <%= fa_icon "retweet", aria: { hidden: true} %>
+                      </span>
+                    </a>
+                    <a class="level-item" aria-label="like">
+                      <span class="icon is-small">
+                        <%= fa_icon "heart", aria: { hidden: true} %>
+                      </span>
+                    </a>
+                  </div>
+                </nav>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+<!-- END ARTICLES SECTION -->
+  </div>
+</section>

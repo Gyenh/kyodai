@@ -3,10 +3,133 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 #kyodai-landing {
-
-
   background: linear-gradient(to top, rgba(255,255,255,0) 20%,
               rgba(255,255,255,1)), image-url('landing.jpg');
-
   background-size: cover;
+}
+
+#page-2 {
+  background-color: #0a131c;
+}
+
+
+// All the section below is for the mouse on the homepage
+
+$mouseHeight: 40px;
+$mouseWidth: 20px;
+
+$mouseColor: rgba(255, 255, 255, 1);
+$mouseWheelColor: $mouseColor;
+
+$hoverTransition: 0.2s ease-in-out;
+$mouseHoverColor: rgba(255, 255, 255, 0.4);
+$mouseWheelHoverColor: $mouseHoverColor;
+
+.mouse-container {
+  display: block;
+  text-align: center;
+
+  .mouse-outer {
+    position: relative;
+    display: inline-block;
+
+    height: $mouseHeight;
+    width: $mouseWidth;
+
+    border: 2px solid $mouseColor;
+    border-radius: $mouseHeight;
+
+    transition: border-color $hoverTransition;
+
+    .mouse-wheel {
+      $wheelWidth: #{ceil($mouseWidth / 6)};
+      $halfWheelWidth: #{$mouseWidth / 12};
+
+      position: absolute;
+      top: 10%;
+      left: 50%;
+      margin-left: -$halfWheelWidth;
+
+      height: #{$mouseHeight / 4};
+      width: $wheelWidth;
+      background-color: $mouseWheelColor;
+
+      border-radius: $wheelWidth;
+
+      transition: background-color $hoverTransition;
+
+      -webkit-animation: scroll 1.4s infinite linear;
+      -moz-animation: scroll 1.4s infinite linear;
+      -o-animation: scroll 1.4s infinite linear;
+      animation: scroll 1.4s infinite linear;
+    }
+
+    &:hover {
+      border-color: $mouseHoverColor;
+
+      .mouse-wheel {
+        background-color: $mouseWheelHoverColor;
+      }
+    }
+  }
+}
+
+@-webkit-keyframes scroll {
+  0% {
+    transform: scaleY(0.5) translateY(0);
+  }
+  20% {
+    transform: scaleY(1) translateY(#{$mouseHeight / 8});
+  }
+  60% {
+    transform: scaleY(0.5) translateY(15px);
+  }
+  to {
+    transform: scaleY(0.5) translateY(0);
+  }
+}
+
+@-o-keyframes scroll {
+  0% {
+    transform: scaleY(0.5) translateY(0);
+  }
+  20% {
+    transform: scaleY(1) translateY(#{$mouseHeight / 8});
+  }
+  60% {
+    transform: scaleY(0.5) translateY(15px);
+  }
+  to {
+    transform: scaleY(0.5) translateY(0);
+  }
+}
+
+@-moz-keyframes scroll {
+  0% {
+    transform: scaleY(0.5) translateY(0);
+  }
+  20% {
+    transform: scaleY(1) translateY(#{$mouseHeight / 8});
+  }
+  60% {
+    transform: scaleY(0.5) translateY(15px);
+  }
+  to {
+    transform: scaleY(0.5) translateY(0);
+  }
+}
+
+@keyframes scroll {
+  0% {
+    transform: scaleY(0.5) translateY(0);
+  }
+  20% {
+    transform: scaleY(1) translateY(#{$mouseHeight / 8});
+  }
+  60% {
+    transform: scaleY(0.5) translateY(15px);
+  }
+  to {
+    transform: scaleY(0.5) translateY(0);
+  }
 }

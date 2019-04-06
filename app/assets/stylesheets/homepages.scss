@@ -12,6 +12,13 @@
   background-color: #0a131c;
 }
 
+#connected-banner-index {
+  background: linear-gradient(to top, rgba(255,255,255,0) 20%,
+              rgba(255,255,255,1)), image-url('landing.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
 
 // All the section below is for the mouse on the homepage
 

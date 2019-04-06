@@ -13,34 +13,78 @@
           <%= image_tag("favicon.png", height: '100', width: '100')%>
         </figure>
 
-        <h1 class="title has-text-white">
+        <h1 class="title">
           KYÔDAÏ
         </h1>
 
-        <h2 class="subtitle has-text-white">
-          Bienvenus<br>
-          Venez découvrir ou partager des musiques et articles !
+        <h2 class="subtitle">
+          Bienvenue<br>
+          Venez découvrir ou partager des articles et des musiques !
         </h2>
 
-          <%= link_to fa_icon("connectdevelop", text:"Connexion", class:"text-muted pull-left"), new_user_session_path, class: 'button is-rounded is-light is-medium' %>
-          <%= link_to fa_icon("user-plus", text:"Inscription", class:"text-muted pull-left"), new_user_registration_path, class: 'button is-rounded is-primary is-medium' %>
+        <div class="columns is-desktop">
+          <div class="column">
+            <%= link_to fa_icon("connectdevelop", text:"Connexion", class:"text-muted pull-left"), new_user_session_path, class: 'button is-rounded is-light is-medium' %>
+          </div>
+          <div class="column">
+            <%= link_to fa_icon("user-plus", text:"Inscription", class:"text-muted pull-left"), new_user_registration_path, class: 'button is-rounded is-primary is-medium' %>
+          </div>
+        </div>
+
+        <div class="mouse-container">
+          <a class="js-scrollTo" href="#page-2">
+            <span class="mouse-outer">
+              <span class="mouse-wheel"></span>
+            </span>
+          </a>
+        </div>
 
       </div>
     </div>
-
-    <div class="hero-foot">
-      <div class="mouse-container">
-        <a class="js-scrollTo" href="#page-2">
-          <span class="mouse-outer">
-            <span class="mouse-wheel"></span>
-          </span>
-        </a>
-      </div>
-    </div>
-
   </section>
 
   <section id="page-2" class="hero is-fullheight">
+    <div class="hero-body">
+      <div class="container has-text-centered has-text-white">
+
+        <div class="tile is-ancestor">
+          <div class="tile is-4 is-vertical is-parent">
+            <div class="tile is-child">
+              <figure class="avatar">
+                <%= image_tag("logokyo.png", height: '150', width: '150')%>
+              </figure>
+            </div>
+          </div>
+
+          <div class="tile is-parent">
+            <div class="tile is-child">
+              <p class="title has-text-white">KYÔDAÏ, qu’est-ce que c’est ?</p>
+              <p>Du japonais 兄弟, qui veut dire frères et soeurs. C'est avant tout une plateforme fait par un groupe d'amis pour le groupe d'amis.</p>
+              <p>Sur ce site vous pourrez partager, mais aussi découvrir des articles et des musiques provenant de la plateforme YouTube.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="tile is-ancestor">
+          <div class="tile is-parent">
+            <div class="tile is-child">
+              <p class="title has-text-white">L'Oniboso Crew</p>
+              <p>Groupe formé en 2002 par 5 membres.</p>
+              <p>Avant tout un groupe de danseurs hip-hop, mais aussi de monteur vidéo, monteur son et d'un caméraman.</p>
+            </div>
+          </div>
+
+          <div class="tile is-parent is-4 is-vertical">
+            <div class="tile is-child">
+              <figure class="avatar">
+                <%= image_tag("onibosologo.png", height: '150', width: '150')%>
+              </figure>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
   </section>
 
 <% end %>

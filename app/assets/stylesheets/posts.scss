@@ -1,0 +1,25 @@
+// Place all the styles related to the posts controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.bm--card-equal-height {
+   display: flex;
+   flex-direction: column;
+   height: 100%;
+}
+
+.bm--card-equal-height .card-footer {
+   margin-top: auto;
+}
+
+iframe {
+   height: 360px !important;
+}
+
+#posts-banner-index {
+  background: linear-gradient(to top, rgba(255,255,255,0) 20%,
+              rgba(255,255,255,1)), image-url('landing.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}

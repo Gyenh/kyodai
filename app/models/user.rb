@@ -4,12 +4,15 @@ class User < ApplicationRecord
 
   attr_accessor :login
 
-  validates :username, presence: true, uniqueness: {case_sensitive: false}, format: {with: /\A[a-zA-Z0-9 _\.]*\z/ }
+  validates :username, presence: true, uniqueness: {case_sensitive: false}, format: { with: /\A[a-zA-Z0-9]+\Z/ }
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable, :trackable
 
   devise :omniauthable, omniauth_providers: [:facebook]
+
+  has_many :posts, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
   def self.find_first_by_auth_conditions(warden_conditions)
 

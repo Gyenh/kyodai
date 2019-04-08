@@ -1,0 +1,62 @@
+<section id="posts-banner-index" class="hero is-medium is-primary is-bold">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title is-1 has-text-centered has-text-grey-darker">TOUTES LES MUSIQUES PARTAGEES</h1>
+    </div>
+  </div>
+
+  <div class="hero-foot">
+    <nav class="tabs is-boxed is-fullwidth">
+      <div class="container">
+        <ul>
+          <li><%= link_to fa_icon("eye", text:"Mes musiques", class:"text-muted pull-left"), root_path %></li></li>
+          <li><%= link_to fa_icon("plus-square", text:"Nouvelle musique", class:"text-muted pull-left"), new_post_path %></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <% @posts.each_slice(4) do |music| %>
+    <div class="columns">
+      <% music.each do |post| %>
+      <div class="column is-one-quarter">
+        <div class="card bm--card-equal-height">
+
+          <div class="card-image">
+            <figure class="image is-4by3">
+              <%= image_tag("http://img.youtube.com/vi/#{post.link}/0.jpg") %>
+            </figure>
+          </div>
+
+          <div class="card-content">
+            <div class="media">
+              <div class="media-content has-text-centered">
+                <p class="title is-4"><%= post.title %></p>
+              </div>
+            </div>
+
+            <div class="content">
+              <%= post.content %>
+            </div>
+
+          </div>
+
+          <div class="card-footer">
+            <span class="card-footer-item"><%= post.comments.count %> Commentaire(s)</span>
+            <p class="card-footer-item">Publié(e) par <%= post.user.username.capitalize %></p>
+          </div>
+
+          <footer class="card-footer">
+            <%= link_to fa_icon("plus", text:"Détails", class:"text-muted pull-left"), post_path(post), class:"card-footer-item button is-info" %>
+          </footer>
+
+        </div>
+      </div>
+      <% end %>
+    </div>
+    <% end %>
+  </div>
+</section>

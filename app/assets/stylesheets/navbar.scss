@@ -1,5 +1,5 @@
 .navbar-brand {
-  margin-left: 10rem;
+  margin-left: 5%;
 }
 
 .navbar-end {
@@ -10,3 +10,15 @@
   margin: 5%;
 }
 
+.navbar-item.fucking-list:hover {
+  text-decoration: underline hsl(171, 100%, 41%);
+}
+
+a.navbar-item:hover {
+  color: hsl(171, 100%, 41%) !important;
+  font-size: 18px;
+}
+
+.navbar-item.logo {
+  padding: 0;
+}

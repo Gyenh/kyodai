@@ -1,6 +1,6 @@
 <nav class="navbar is-gray" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
-      <%= link_to image_tag("logokyo.png", height: '100', width: '100', class: "navbar-item logo"), root_path %>
+    <%= link_to image_tag("logokyo.png", height: '100', width: '100', class: "navbar-item logo"), root_path %>
 
     <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
       <span aria-hidden="true"></span>
@@ -11,11 +11,11 @@
 
   <div id="navbarBasicExample" class="navbar-menu">
     <div class="navbar-start">
-      <%= link_to "Accueil", root_path, class: "navbar-item" %>
+      <%= link_to "Accueil", root_path, class: "navbar-item fucking-list" %>
 
-      <%= link_to "Articles",root_path, class: "navbar-item" %>
+      <%= link_to "Musiques", posts_path, class: "navbar-item fucking-list" %>
 
-      <%= link_to "Musiques",root_path, class: "navbar-item" %>
+      <%= link_to "A venir",root_path, class: "navbar-item fucking-list" %>
     </div>
 
     <div class="navbar-end">
@@ -31,14 +31,14 @@
                     <% else %>
                       <%= image_tag current_user.image, class: "image is-32x32" %>
                     <%end%>
-                    <%= current_user.username %>
+                    <%= current_user.username.capitalize %>
                   </div>
                 <%end%>
                 <div class="dropdown-menu" id="dropdown-menu4" role="menu">
                   <div class="dropdown-content">
                     <div class="dropdown-item">
                       <%= link_to "Mon compte", edit_user_registration_path, class: 'button is-light is-fullwidth' %>
-                      <%= link_to "Se déconnecter", destroy_user_session_path, method: :delete, class: "button is-danger navbar-item" %>
+                      <%= link_to "Se déconnecter", destroy_user_session_path, method: :delete, class: "button is-danger is-fullwidth" %>
                     </div>
                   </div>
                 </div>

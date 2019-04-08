@@ -5,6 +5,10 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <%= favicon_link_tag asset_path('favicon.png') %>
+
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -12,8 +16,13 @@
   <body>
     <%= render 'shared/flash_messages' if !flash.empty? %>
 
-    <%= render "shared/navbar" %>
+<!-- Permet de cacher la navbar sur la page d'accueil -->
+    <% if @show_navbar -%>
+      <%= render 'shared/navbar' %>
+    <% end %>
+
     <%= yield %>
+
     <%= render "shared/footer" %>
 
   </body>

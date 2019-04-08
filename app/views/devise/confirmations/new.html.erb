@@ -1,16 +1,33 @@
-<h2>Resend confirmation instructions</h2>
+<section class="hero is-fullheight">
+  <div class="hero-body">
+    <div class="container has-text-centered">
+      <div class="column is-4 is-offset-4">
+        <h3 class="title has-text-grey">Renvoyer les instructions de confirmation</h3>
+          <div class="box">
+            <figure class="avatar">
+              <%= image_tag("logokyo.png", height: '128', width: '128')%>
+            </figure>
 
-<%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+            <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
+            <%= render "devise/shared/error_messages", resource: resource %> <br>
+            <form>
+              <div class="field">
+                <div class="control">
+                  <%= f.email_field :email, autofocus: true, autocomplete: "email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email), class:"input is-primary is-large", placeholder:"L'email" %>
+                </div>
+              </div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email) %>
+            <div class="actions">
+              <%= f.button fa_icon("rocket", text:"Renvoyez le mail !", class:"text-muted pull-left"), class:"button is-primary is-large is-fullwidth" %>
+            </div>
+            </form>
+            <% end %>
+
+          </div>
+          <p class="has-text-grey">
+            <%= render "devise/shared/links" %>
+          </p>
+      </div>
+    </div>
   </div>
-
-  <div class="actions">
-    <%= f.submit "Resend confirmation instructions" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</section>

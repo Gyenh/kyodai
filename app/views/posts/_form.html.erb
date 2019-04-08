@@ -2,15 +2,16 @@
   <%= form_for @post do |f| %>
   <div class="field">
     <div class="control">
-      <%= f.label :post, "Un titre court" %>
-      <%= f.text_field :title, autofocus: true, class: "input" %>
+      <%= f.label :post, "Un titre" %>
+       <em>(28 caractères maximum)</em>
+      <%= f.text_field :title, autofocus: true, class: "input", maxlength: 28 %>
     </div>
   </div>
 
   <div class="field">
     <div class="control">
       <%= f.label :post, "Une description ?" %>
-      <%= f.text_area :content, class: "textarea" %>
+      <%= f.text_area :content, class: "textarea", placeholder: "100 caractères maximum", maxlength: 100 %>
     </div>
   </div>
 

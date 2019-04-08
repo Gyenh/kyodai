@@ -18,9 +18,10 @@ class PostsController < ApplicationController
     @post.link = @results
 
     if @post.save
-
+      flash[:notice] = "Musique partagée avec succès"
       redirect_to @post
     else
+      flash[:alert] = "Il y a une petite erreur, merci de réessayer"
       render 'new'
     end
   end

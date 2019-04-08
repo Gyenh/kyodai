@@ -14,6 +14,10 @@
 
     <%= form_for @article do |f| %>
 
+    <div class='a_supprimer'>
+      <%= f.label "Prenez des liens Google pour les images, merci !" %>
+    </div>
+
     <div>
       <%= f.text_field :title, placeholder: "Mets ton titre ici, poto !" %>
     </div>

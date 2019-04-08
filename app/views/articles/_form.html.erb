@@ -15,15 +15,7 @@
     <%= form_for @article do |f| %>
 
     <div>
-      <%= f.label :title %>
-    </div>
-
-    <div>
-      <%= f.text_field :title %>
-    </div>
-
-    <div>
-      <%= f.label :body %>
+      <%= f.text_field :title, placeholder: "Mets ton titre ici, poto !" %>
     </div>
 
     <div>
@@ -31,7 +23,8 @@
     </div>
 
     <div>
-      <%= f.submit %>
+      <%= f.submit 'Créé l\'article' %>
+      <%= link_to "Retour", articles_path %>
     </div>
     <% end %>
 

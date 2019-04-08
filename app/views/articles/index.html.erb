@@ -1,9 +1,35 @@
-<%= link_to "New Article", new_article_path %>
-<% @articles.each do |article| %>
-  <h3><%= article.title.html_safe %></h3>
-  <p><%= article.body.html_safe %></p>
-  <%= link_to "Edit Article", edit_article_path(article) %>
-  <% if article != @articles.last %>
-  <hr />
-  <% end %>
-<% end %>
+<div class='index_article'>
+
+  <div>
+    <%= link_to "Ecrire un nouvel article", new_article_path %>
+  </div>
+
+  <div>
+
+    <% @articles.each do |article| %>
+
+    <div class='complete_article'>
+
+      <div class='title_article'
+      <h3><%= article.title.html_safe %></h3>
+    </div>
+
+    <div class='body_article'>
+      <p><%= article.body.html_safe %></p>
+    </div>
+
+    <div class='edit_article'>
+      <%= link_to "Edité l'article", edit_article_path(article) %>
+      <%= link_to 'Supprimé l\'article', article_path(article), method: 'delete', data: { confirm: 'Etes-vous sûr ?' } %>
+      <% if article != @articles.last %>
+      <hr />
+      <% end %>
+    </div>
+
+    </div>
+
+    <% end %>
+
+  </div>
+
+</div>

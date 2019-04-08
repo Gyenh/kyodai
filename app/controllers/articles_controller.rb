@@ -15,9 +15,9 @@ class ArticlesController < ApplicationController
   def create
     @article = Article.new(article_params)
     if @article.save
-      redirect_to articles_path, notice: "The article has been successfully created."
+      redirect_to articles_path, notice: "L'article a bien été créer."
     else
-      render action: "new"
+      render action: "Nouvel article"
     end
   end
 
@@ -32,6 +32,13 @@ class ArticlesController < ApplicationController
     else
       render action: "edit"
     end
+  end
+
+  def destroy
+    @Article = Article.find(params[:id])
+    @Article.destroy
+
+    redirect_to articles_path, notice: "L'article a bien été supprimer."
   end
 
 private

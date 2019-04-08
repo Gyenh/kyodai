@@ -1,3 +1,20 @@
 // Place all the styles related to the Articles controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.index_article {
+  
+}
+
+.form_complete {
+  display: flex;
+  justify-content: center;
+  width: 70%;
+  height: 55%;
+}
+
+input[type=text] {
+  background-color: #3CBC8D;
+  color: white;
+}

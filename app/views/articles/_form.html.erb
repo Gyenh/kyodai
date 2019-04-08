@@ -1,24 +1,40 @@
-<% if @article.errors.any? %>
-  <ul>
-    <%= @article.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+<div class='form_complete'>
+
+  <div>
+    <% if @article.errors.any? %>
+    <ul>
+      <%= @article.errors.full_messages.each do |message| %>
+      <li><%= no comprende message %></li>
+      <% end %>
+    </ul>
     <% end %>
-  </ul>
-<% end %>
-<%= form_for @article do |f| %>
-  <div>
-    <%= f.label :title %>
   </div>
-  <div>
-    <%= f.text_field :title %>
+
+  <div class='form_for'>
+
+    <%= form_for @article do |f| %>
+
+    <div>
+      <%= f.label :title %>
+    </div>
+
+    <div>
+      <%= f.text_field :title %>
+    </div>
+
+    <div>
+      <%= f.label :body %>
+    </div>
+
+    <div>
+      <%= f.cktext_area :body, rows: 25 %>
+    </div>
+
+    <div>
+      <%= f.submit %>
+    </div>
+    <% end %>
+
   </div>
-  <div>
-    <%= f.label :body %>
-  </div>
-  <div>
-    <%= f.cktext_area :body, rows: 10 %>
-  </div>
-  <div>
-    <%= f.submit %>
-  </div>
-<% end %>
+
+</div>

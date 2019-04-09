@@ -1,12 +1,12 @@
 class ArticlesController < ApplicationController
+  before_action :authenticate_user!
+  before_action :find_post, only: %i[show update edit destroy]
 
   def index
     @articles = Article.order("created_at DESC")
   end
 
-  def show
-    @article = Article.find(params[:id])
-  end
+  def show; end
 
   def new
     @article = Article.new
@@ -15,30 +15,26 @@ class ArticlesController < ApplicationController
   def create
     @article = Article.new(article_params)
     if @article.save
-      redirect_to articles_path, notice: "L'article a bien été créer."
+      redirect_to articles_path, notice: "L'article a bien été créé."
     else
       render action: "Nouvel article"
     end
   end
 
-  def edit
-    @article = Article.find(params[:id])
-  end
+  def edit; end
 
   def update
-    @article = Article.find(params[:id])
     if @article.update_attributes(article_params)
-      redirect_to articles_path, notice: "The article has been successfully updated."
+      redirect_to articles_path, notice: "L'article a bien été mis à jour."
     else
       render action: "edit"
     end
   end
 
   def destroy
-    @Article = Article.find(params[:id])
-    @Article.destroy
+    @article.destroy
 
-    redirect_to articles_path, notice: "L'article a bien été supprimer."
+    redirect_to articles_path, notice: "L'article a bien été supprimé."
   end
 
 private
@@ -46,4 +42,9 @@ private
   def article_params
     params.require(:article).permit(:title, :body)
   end
+
+  def find_article
+    @article = Article.find(params[:id])
+  end
+
 end

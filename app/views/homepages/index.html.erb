@@ -13,21 +13,23 @@
           <%= image_tag("favicon.png", height: '100', width: '100')%>
         </figure>
 
-        <h1 class="title">
+        <div class="title">
           KYÔDAÏ
-        </h1>
+        </div>
 
-        <h2 class="subtitle">
+        <div class="subtitle">
           Bienvenue<br>
           Venez découvrir ou partager des articles et des musiques !
-        </h2>
+        </div>
 
-        <div class="columns is-desktop">
-          <div class="column">
-            <%= link_to fa_icon("connectdevelop", text:"Connexion", class:"text-muted pull-left"), new_user_session_path, class: 'button is-rounded is-light is-medium' %>
-          </div>
-          <div class="column">
-            <%= link_to fa_icon("user-plus", text:"Inscription", class:"text-muted pull-left"), new_user_registration_path, class: 'button is-rounded is-primary is-medium' %>
+        <div class="column is-8 is-offset-2">
+          <div class="level">
+            <div class="level-item">
+              <%= link_to fa_icon("connectdevelop", text:"Connexion", class:"text-muted pull-left"), new_user_session_path, class: 'button is-rounded is-light is-medium' %>
+            </div>
+            <div class="level-item">
+              <%= link_to fa_icon("user-plus", text:"Inscription", class:"text-muted pull-left"), new_user_registration_path, class: 'button is-rounded is-primary is-medium' %>
+            </div>
           </div>
         </div>
 
@@ -38,6 +40,7 @@
             </span>
           </a>
         </div>
+
 
       </div>
     </div>
@@ -69,7 +72,7 @@
           <div class="tile is-parent">
             <div class="tile is-child">
               <p class="title has-text-white">L'Oniboso Crew</p>
-              <p>Groupe formé en 2002 par 5 membres.</p>
+              <p>Groupe formé en 2002 par 6 membres.</p>
               <p>Avant tout un groupe de danseurs hip-hop, mais aussi de monteur vidéo, monteur son et d'un caméraman.</p>
             </div>
           </div>

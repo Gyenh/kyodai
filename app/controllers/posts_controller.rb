@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   before_action :find_post, only: %i[show update edit destroy]
 
   def index
-    @posts = Post.all.order("created_at DESC")
+    @posts = Post.all.order("created_at DESC").page(params[:page]).per(12)
   end
 
   def new

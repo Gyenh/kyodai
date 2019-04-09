@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
   before_action :authenticate_user!
-  before_action :find_post, only: %i[show update edit destroy]
+  before_action :find_article, only: %i[show update edit destroy]
 
   def index
     @articles = Article.order("created_at DESC")
@@ -17,7 +17,7 @@ class ArticlesController < ApplicationController
     if @article.save
       redirect_to articles_path, notice: "L'article a bien été créé."
     else
-      render action: "Nouvel article"
+      render action: "Nouveau article"
     end
   end
 

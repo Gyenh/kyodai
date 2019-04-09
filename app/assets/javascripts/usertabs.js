@@ -1,4 +1,4 @@
-$(document).ready(function () {
+document.addEventListener("turbolinks:load", function () {
   $('#tabs li').on('click', function () {
     var tab = $(this).data('tab');
 

@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   resources :posts do
     resources :comments
+    get 'page/:page', action: :index, on: :collection
   end
 
   mount Ckeditor::Engine => '/ckeditor'

@@ -9,11 +9,15 @@
       </div>
     </div>
 
-    <% if user_signed_in? && comment.user_id == current_user.id %>
-    <%= link_to 'Delete', [comment.post, comment], method: :delete, class: "button is-danger", data: {confirm: "Are you sure ?" } %>
-    <% else %>
+    <div class="buttons are-small">
+      <% if user_signed_in? && comment.user_id == current_user.id %>
+      <%= link_to fa_icon("bomb", text:"Supprimer", class:"text-muted pull-left"), [comment.post, comment], method: :delete, class: "button is-danger", data: {confirm: "Sûr ?" } %>
+      <% else %>
 
-    <% end %>
+      <% end %>
 
+      <%= fa_icon "history", text: "#{comment.created_at.strftime("Posté le %d/%m/%Y")}",class: "text-muted pull-left" %>
+
+    </div>
   </article>
 </div>

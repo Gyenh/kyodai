@@ -32,8 +32,9 @@ class PostsController < ApplicationController
 
   def update
     if @post.update(post_params)
-      redirect_to @post
+      redirect_to @post, notice: "La musique a bien été mis à jour."
     else
+      flash[:alert] = "Il y a une petite erreur, merci de réessayer"
       render 'edit'
     end
 
@@ -44,7 +45,7 @@ class PostsController < ApplicationController
   def destroy
     @post.destroy
 
-    redirect_to posts_path
+    redirect_to posts_path, notice: "Musique bien supprimée"
   end
 
   private

@@ -1,32 +1,33 @@
-<section class="section">
-  <h2 class="title has-text-centered">
-    Mes posts
-  </h2>
-
-  <div class="columns">
-
-    <% current_user.posts.each do |post| %>
-    <div class="card bm--card-equal-height">
-      <div class="card-content">
-
-        <div class="media">
-          <div class="media-content has-text-centered">
-            <p class="title is-6"><%= post.title %></p>
-          </div>
-        </div>
-
+<section class="hero is-fullheight">
+  <div class="hero-body">
+    <div class="container has-text-centered">
+      <div class="column is-10 is-offset-1">
+        <table class="table">
+          <thead>
+            <tr>
+              <th><abbr title="ID">Id</abbr></th>
+              <th>Titre</th>
+              <th>Description</th>
+              <th>Date de publication</abbr></th>
+              <th>Editer</th>
+              <th>Supprimer</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% current_user.posts.each do |post| %>
+            <tr>
+              <th><%= post.id %></th>
+              <td><%= post.title %>
+              </td>
+              <td><%= post.content %></td>
+              <td><%= post.created_at.strftime("Posté le %d/%m/%Y")  %></td>
+              <td><%= link_to "Edit", edit_post_path(post), class:"button is-small" %></td>
+              <td><%= link_to "Delete", post_path(post), method: :delete, data: { confirm: "Are you sure ?"}, class:"button is-danger is-small" %></td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
       </div>
-
-        <%= post.content %>
-
-          <%= post.created_at.strftime("Posté le %d/%m/%Y")  %>
-
-          <%= link_to "Edit", edit_post_path(post), class:"button" %>
-          <%= link_to "Delete", post_path(post), method: :delete, data: { confirm: "Are you sure ?"}, class:"button is-danger" %>
-
-
     </div>
-
-    <% end %>
   </div>
 </section>

@@ -1,7 +1,4 @@
 Rails.application.routes.draw do
-  
-  mount Ckeditor::Engine => '/ckeditor'
-  resources :articles
 
   root 'homepages#index'
 
@@ -12,5 +9,8 @@ Rails.application.routes.draw do
   resources :posts do
     resources :comments
   end
+
+  mount Ckeditor::Engine => '/ckeditor'
+  resources :articles
 
 end

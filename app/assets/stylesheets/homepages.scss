@@ -4,8 +4,9 @@
 
 #kyodai-landing {
   background: linear-gradient(to top, rgba(255,255,255,0) 20%,
-              rgba(255,255,255,1)), image-url('landing.jpg');
+              rgb(112, 112, 112)), image-url('landing2.jpg');
   background-size: cover;
+  background-position: center;
 }
 
 #page-2 {
@@ -14,7 +15,7 @@
 
 #connected-banner-index {
   background: linear-gradient(to top, rgba(255,255,255,0) 20%,
-              rgba(255,255,255,1)), image-url('landing.jpg');
+              rgba(255,255,255,1)), image-url('landing2.jpg');
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;

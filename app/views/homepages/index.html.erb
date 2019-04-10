@@ -13,11 +13,11 @@
           <%= image_tag("favicon.png", height: '100', width: '100')%>
         </figure>
 
-        <div class="title">
+        <div class="title has-text-white">
           KYÔDAÏ
         </div>
 
-        <div class="subtitle">
+        <div class="subtitle has-text-white">
           Bienvenue<br>
           Venez découvrir ou partager des articles et des musiques !
         </div>
@@ -25,14 +25,18 @@
         <div class="column is-8 is-offset-2">
           <div class="level">
             <div class="level-item">
-              <%= link_to fa_icon("connectdevelop", text:"Connexion", class:"text-muted pull-left"), new_user_session_path, class: 'button is-rounded is-light is-medium' %>
+              <%= link_to fa_icon("connectdevelop", text:"Connexion", class:"text-muted pull-left"), new_user_session_path, class: 'button is-rounded is-medium' %>
             </div>
             <div class="level-item">
               <%= link_to fa_icon("user-plus", text:"Inscription", class:"text-muted pull-left"), new_user_registration_path, class: 'button is-rounded is-primary is-medium' %>
             </div>
           </div>
         </div>
+      </div>
+    </div>
 
+    <div class="hero-foot">
+      <div class="container">
         <div class="mouse-container">
           <a class="js-scrollTo" href="#page-2">
             <span class="mouse-outer">
@@ -40,10 +44,9 @@
             </span>
           </a>
         </div>
-
-
       </div>
     </div>
+
   </section>
 
   <section id="page-2" class="hero is-fullheight">

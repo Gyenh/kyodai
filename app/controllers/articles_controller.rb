@@ -3,7 +3,7 @@ class ArticlesController < ApplicationController
   before_action :find_article, only: %i[show update edit destroy]
 
   def index
-    @articles = Article.order("created_at DESC")
+    @articles = Article.order('created_at DESC')
   end
 
   def show; end
@@ -14,10 +14,11 @@ class ArticlesController < ApplicationController
 
   def create
     @article = Article.new(article_params)
+    @article.user_id = current_user.id
     if @article.save
       redirect_to articles_path, notice: "L'article a bien été créé."
     else
-      render action: "Nouveau article"
+      render action: 'Nouveau article'
     end
   end
 
@@ -27,17 +28,15 @@ class ArticlesController < ApplicationController
     if @article.update_attributes(article_params)
       redirect_to articles_path, notice: "L'article a bien été mis à jour."
     else
-      render action: "edit"
+      render action: 'edit'
     end
   end
 
   def destroy
-    @article.destroy
-
-    redirect_to articles_path, notice: "L'article a bien été supprimé."
+    return @article.destroy redirect_to @article, notice: "L'article a bien été supprimé." if current_user.id == @article.user_id
   end
 
-private
+  private
 
   def article_params
     params.require(:article).permit(:title, :body)
@@ -46,5 +45,4 @@ private
   def find_article
     @article = Article.find(params[:id])
   end
-
 end

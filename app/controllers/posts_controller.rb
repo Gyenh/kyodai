@@ -46,7 +46,7 @@ class PostsController < ApplicationController
   def destroy
     @post.destroy
 
-    redirect_to posts_path, notice: "Musique bien supprimée"
+    redirect_to posts_path, notice: 'Musique bien supprimée'
   end
 
   private

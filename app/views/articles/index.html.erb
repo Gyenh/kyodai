@@ -1,35 +1,55 @@
-<div class='index_article'>
-
-  <div>
-    <%= link_to "Ecrire un nouvel article", new_article_path %>
+<section id="posts-banner-index" class="hero is-medium is-primary is-bold">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title is-1 has-text-centered has-text-grey-darker">TOUS LES ARTICLES</h1>
+    </div>
   </div>
 
-  <div>
+  <div class="hero-foot">
+    <nav class="tabs is-boxed is-fullwidth">
+      <div class="container">
+        <ul>
+          <li><%= link_to fa_icon("eye", text:"Mes articles", class:"text-muted pull-left"), root_path %></li></li>
+          <li><%= link_to fa_icon("plus-square", text:"Nouveau article", class:"text-muted pull-left"), new_article_path %></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+</section>
 
-    <% @articles.each do |article| %>
+<section class="section">
+  <div class="container">
+    <% @articles.each_slice(4) do |art| %>
+    <div class="columns">
+      <% art.each do |article| %>
+      <div class="column is-one-quarter">
+        <div class="card bm--card-equal-height complete_article">
 
-    <div class='complete_article'>
+          <div class="card-content">
+            <div class="media">
+              <div class="media-content has-text-centered">
+                <p class="title is-4"><%= article.title.html_safe %></p>
+              </div>
+            </div>
 
-    <div class='title_article'>
-      <h3><%= article.title.html_safe %></h3>
-    </div>
+            <div class="content body_article">
+              <%= article.body.html_safe %>
+            </div>
 
-    <div class='body_article'>
-      <p><%= article.body.html_safe %></p>
-    </div>
+          </div>
 
-    <div class='edit_article'>
-      <%= link_to "Edité l'article", edit_article_path(article) %>
-      <%= link_to 'Supprimé l\'article', article_path(article), method: 'delete', data: { confirm: 'Etes-vous sûr ?' } %>
-      <% if article != @articles.last %>
-      <hr />
+          <div class="card-footer">
+            <p class="card-footer-item">Publié(e) par <%= article.user.username.capitalize %></p>
+          </div>
+
+          <footer class="card-footer">
+            <%= link_to fa_icon("plus", text:"Détails", class:"text-muted pull-left"), article_path(article), class:"card-footer-item button is-info" %>
+          </footer>
+
+        </div>
+      </div>
       <% end %>
     </div>
-
-    </div>
-
     <% end %>
-
   </div>
-
-</div>
+</section>

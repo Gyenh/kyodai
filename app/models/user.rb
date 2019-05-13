@@ -11,6 +11,7 @@ class User < ApplicationRecord
 
   devise :omniauthable, omniauth_providers: [:facebook]
 
+  has_many :articles, dependent: :destroy
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
 

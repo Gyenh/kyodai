@@ -1,15 +1,13 @@
-// Place all the styles related to the Articles controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-
-
-.index_article {
-
-}
-
 .form_complete {
   display: flex;
   justify-content: center;
   width: 70%;
   height: 55%;
+}
+
+#articles-banner-index {
+  background: linear-gradient(to top, rgba(255,255,255,0) 20%,
+              rgba(255,255,255,1)), image-url('books.jpg');
+  background-position: center;
+  background-size: cover;
 }

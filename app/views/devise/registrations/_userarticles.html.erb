@@ -1,0 +1,34 @@
+<section class="hero is-fullheight">
+  <div class="hero-body">
+    <div class="container has-text-centered">
+      <div class="column is-10 is-offset-1">
+        <table class="table">
+          <thead>
+            <tr>
+              <th><abbr title="ID">Id</abbr></th>
+              <th>Titre</th>
+              <th>Description</th>
+              <th>Date de publication</abbr></th>
+              <th>Editer</th>
+              <th>Supprimer</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% current_user.articles.each do |article| %>
+            <tr>
+              <th><%= article.id %></th>
+              <td><%= article.title %>
+              </td>
+              <!-- sanitize permet de supprimer les balises HTML -->
+              <td><%= sanitize article.body.truncate_words(15) %></td>
+              <td><%= article.created_at.strftime("Posté le %d/%m/%Y")  %></td>
+              <td><%= link_to "Edit", edit_article_path(article), class:"button is-small" %></td>
+              <td><%= link_to "Delete", article_path(article), method: :delete, data: { confirm: "Are you sure ?"}, class:"button is-danger is-small" %></td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>

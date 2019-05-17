@@ -20,6 +20,7 @@
 //=require navbar
 //=require flashes_messages
 //=require usertabs
+//=require ckeditor/config
 
 $(document).ready(function () {
   $('.js-scrollTo').on('click', function () { // Au clic sur un élément

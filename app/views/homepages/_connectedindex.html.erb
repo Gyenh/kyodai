@@ -162,46 +162,38 @@
             </div>
             <div class="level-right">
               <div class="level-item">
-                <%= link_to "Ecrire un article", root_path, class:"button is-primary is-rounded"%>
+                <%= link_to "Ecrire un article", new_article_path, class:"button is-primary is-rounded"%>
               </div>
             </div>
           </div>
+
+          <% @articles.each do |article| %>
           <div class="box">
             <article class="media">
               <div class="media-left">
                 <figure class="image is-64x64">
+                  <% if current_user.image.blank? %>
                   <img src="https://versions.bulma.io/0.7.0/images/placeholders/128x128.png" alt="Image">
+                  <% else %>
+                      <%= image_tag current_user.image %>
+                  <%end%>
                 </figure>
               </div>
               <div class="media-content">
                 <div class="content">
                   <p>
-                    <strong>Snak Oniboso</strong> <small>@estattendu</small> <small>merde</small>
+                    <strong><%= article.user.username.capitalize %></strong> <small>@<%= article.title.html_safe %></small>
                     <br>
-                    On attend que monsieur Snak se mette au travail
+                    <%= article.body.truncate_words(20).html_safe %>
                   </p>
                 </div>
-                <nav class="level is-mobile">
-                  <div class="level-left">
-                    <a class="level-item" aria-label="reply">
-                      <span class="icon is-small">
-                        <%= fa_icon "reply", aria: { hidden: true} %>
-                      </span>
-                    </a>
-                    <a class="level-item" aria-label="retweet">
-                      <span class="icon is-small">
-                        <%= fa_icon "retweet", aria: { hidden: true} %>
-                      </span>
-                    </a>
-                    <a class="level-item" aria-label="like">
-                      <span class="icon is-small">
-                        <%= fa_icon "heart", aria: { hidden: true} %>
-                      </span>
-                    </a>
-                  </div>
-                </nav>
               </div>
             </article>
+            <%= link_to fa_icon("eye", text:"Voir", class:"text-muted pull-left"), article_path(article), class:"button card-footer-item" %>
+          </div>
+          <% end %>
+          <div class="container is-fluid has-text-centered">
+            <%= link_to fa_icon("plus", text:"Voir plus", class:"text-muted pull-left"), articles_path, class:"button is-primary is-rounded" %>
           </div>
         </div>
       </div>

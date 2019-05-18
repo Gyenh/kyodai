@@ -9,21 +9,21 @@
     <!-- Hero content: will be in the middle -->
     <div class="hero-body">
       <div class="container has-text-centered">
-        <figure class="avatar">
+        <figure class="avatar animated slideInDown">
           <%= image_tag("favicon.png", height: '100', width: '100')%>
         </figure>
 
-        <div class="title has-text-white">
+        <div class="title has-text-white animated slideInDown">
           KYÔDAÏ
         </div>
 
-        <div class="subtitle has-text-white">
+        <div class="subtitle has-text-white animated slideInUp">
           Bienvenue<br>
           Venez découvrir ou partager des articles et des musiques !
         </div>
 
         <div class="column is-8 is-offset-2">
-          <div class="level">
+          <div class="level animated slideInUp">
             <div class="level-item">
               <%= link_to fa_icon("connectdevelop", text:"Connexion", class:"text-muted pull-left"), new_user_session_path, class: 'button is-medium' %>
             </div>

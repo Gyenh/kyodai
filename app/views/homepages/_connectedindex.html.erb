@@ -73,11 +73,11 @@
 <section id="connected-banner-index" class="hero is-medium is-primary is-bold">
   <div class="hero-body">
     <div class="container has-text-centered">
-      <h1 class="title has-text-grey-darker">
+      <h1 class="title">
         À la une
       </h1>
-      <h2 class="subtitle has-text-grey-darker">
-        Les derniers partages
+      <h2 class="subtitle">
+        Les derniers ajouts
       </h2>
     </div>
   </div>
@@ -88,7 +88,7 @@
 <!-- DISPLAY LAST SHARED MUSIC -->
     <div class="column">
       <div class="box">
-        <h2 class="title has-text-centered has-text-grey-dark"> Dernières musiques </h2>
+        <h2 class="title has-text-centered has-text-grey-dark"> Musiques </h2>
 
           <div class="level">
             <div class="level-left">
@@ -154,7 +154,7 @@
 <!-- SECTION WITH THE LAST ARTICLES-->
       <div class="column is-one-quarter-fullhd">
         <div class="box">
-          <h2 class="title has-text-centered has-text-grey-dark"> Derniers articles </h2>
+          <h2 class="title has-text-centered has-text-grey-dark"> Articles </h2>
           <div class="level">
             <div class="level-left">
               <div class="level-item">
@@ -162,7 +162,7 @@
             </div>
             <div class="level-right">
               <div class="level-item">
-                <%= link_to "Ecrire un article", new_article_path, class:"button is-primary is-rounded"%>
+                <%= link_to fa_icon("pencil", text:"Ecrire un article", class:"text-muted pull-left"), new_article_path, class:"button is-primary is-rounded"%>
               </div>
             </div>
           </div>

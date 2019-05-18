@@ -12,7 +12,7 @@
 
   <div class='form_for'>
 
-    <%= form_for @article do |f| %>
+    <%= form_with(model: @article, local: true) do |f| %>
 
     <div class='a_supprimer'>
       <%= f.label "Prenez des liens Google pour les images, merci !" %>

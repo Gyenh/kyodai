@@ -10,7 +10,7 @@
       <div class="container">
         <ul>
           <li><%= link_to fa_icon("eye", text:"Mes articles", class:"text-muted pull-left"), root_path %></li></li>
-          <li><%= link_to fa_icon("plus-square", text:"Nouveau article", class:"text-muted pull-left"), new_article_path, class: "has-text-grey-darker" %></li>
+          <li id="new-article"><%= link_to fa_icon("plus-square", text:"Nouveau article", class:"text-muted pull-left"), new_article_path, class: "has-text-grey-darker", remote: true %></li>
         </ul>
       </div>
     </nav>
@@ -53,3 +53,4 @@
     <% end %>
   </div>
 </section>
+

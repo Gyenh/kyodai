@@ -1,7 +1,7 @@
-<section id="articles-banner-index" class="hero is-medium is-primary is-bold">
+<section id="articles-banner-index" class="hero is-primary is-bold">
   <div class="hero-body">
     <div class="container">
-      <h1 class="title is-1 has-text-centered has-text-grey-darker">TOUS LES ARTICLES</h1>
+      <h1 class="title is-1 has-text-centered has-text-white">LES ARTICLES</h1>
     </div>
   </div>
 
@@ -10,7 +10,7 @@
       <div class="container">
         <ul>
           <li><%= link_to fa_icon("eye", text:"Mes articles", class:"text-muted pull-left"), root_path %></li></li>
-          <li id="new-article"><%= link_to fa_icon("plus-square", text:"Nouveau article", class:"text-muted pull-left"), new_article_path, class: "has-text-grey-darker", remote: true %></li>
+          <li id="new-article"><%= link_to fa_icon("plus-square", text:"Nouveau article", class:"text-muted pull-left"), new_article_path, remote: true %></li>
         </ul>
       </div>
     </nav>
@@ -18,39 +18,38 @@
 </section>
 
 <section class="section">
-  <div class="container">
-    <% @articles.each_slice(4) do |art| %>
-    <div class="columns">
+  <% @articles.each_slice(4) do |art| %>
+    <div class="container">
       <% art.each do |article| %>
-      <div class="column is-one-quarter">
-        <div class="card bm--card-equal-height complete_article">
+        <div class="box">
+          <div class="tile is-ancestor is-centered">
 
-          <div class="card-content">
-            <div class="media">
-              <div class="media-content has-text-centered">
-                <p class="title is-4"><%= article.title.html_safe %></p>
-              </div>
+            <div class="tile is-4">
+              <figure class="image">
+                <%= image_tag("https://via.placeholder.com/400x300") %>
+              </figure>
             </div>
 
-            <div class="content body_article">
-              <%= article.body.truncate_words(40).html_safe %>
+            <div class="tile">
+              <article class="tile is-child">
+                <div class="title">
+                  <%= article.title.html_safe %>
+                </div>
+                <div class="content">
+                  <%= article.body.truncate_words(20).html_safe %>
+                </div>
+              </article>
             </div>
-
+            <div class="tile is-2 has-text-centered tile-footer">
+              <p>Publié.e par
+                <%= article.user.username.capitalize %>
+              </p>
+              <%= link_to fa_icon("plus", text:"Détails", class:"text-muted pull-left"), article_path(article), class:"button is-info" %>
+            </div>
           </div>
-
-          <div class="card-footer">
-            <p class="card-footer-item">Publié(e) par <%= article.user.username.capitalize %></p>
-          </div>
-
-          <footer class="card-footer">
-            <%= link_to fa_icon("plus", text:"Détails", class:"text-muted pull-left"), article_path(article), class:"card-footer-item button is-info" %>
-          </footer>
-
         </div>
-      </div>
       <% end %>
     </div>
-    <% end %>
-  </div>
+  <% end %>
 </section>
 

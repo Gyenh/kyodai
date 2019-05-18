@@ -33,7 +33,9 @@ class ArticlesController < ApplicationController
   end
 
   def destroy
-    return @article.destroy redirect_to @article, notice: "L'article a bien été supprimé." if current_user.id == @article.user_id
+    if @article.destroy
+      redirect_to @article, notice: "L'article a bien été supprimé."
+    end
   end
 
   private

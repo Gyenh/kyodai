@@ -1,4 +1,4 @@
-<section id="articles-banner-index" class="hero is-primary is-bold">
+<section id="articles-banner-index" class="hero is-warning is-bold">
   <div class="hero-body">
     <div class="container">
       <h1 class="title is-1 has-text-centered has-text-white">LES ARTICLES</h1>
@@ -9,8 +9,8 @@
     <nav class="tabs is-boxed is-fullwidth">
       <div class="container">
         <ul>
-          <li><%= link_to fa_icon("eye", text:"Mes articles", class:"text-muted pull-left"), root_path %></li></li>
-          <li id="myBtn"><%= link_to fa_icon("plus-square", text:"Nouveau article", class:"text-muted pull-left"), new_article_path, remote: true %></li>
+          <li><%= link_to fa_icon("eye", text:"Mes articles", class:"text-muted pull-left has-text-white"), root_path, class:"has-text-white" %></li></li>
+          <li id="myBtn"><%= link_to fa_icon("plus-square", text:"Nouveau article", class:"text-muted pull-left has-text-white"), new_article_path, remote: true, class:"has-text-white"%></li>
 
           <!-- The Modal -->
           <div id="myModal" class="modal">

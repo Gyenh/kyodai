@@ -1,4 +1,4 @@
-<section id="posts-banner-index" class="hero is-medium is-primary is-bold">
+<section id="posts-banner-index" class="hero is-medium is-warning is-bold">
   <div class="hero-body">
     <div class="container">
       <h1 class="title is-1 has-text-centered has-text-white">LES MUSIQUES</h1>
@@ -9,8 +9,18 @@
     <nav class="tabs is-boxed is-fullwidth">
       <div class="container">
         <ul>
-          <li><%= link_to fa_icon("eye", text:"Mes musiques", class:"text-muted pull-left"), root_path %></li></li>
-          <li><%= link_to fa_icon("plus-square", text:"Nouvelle musique", class:"text-muted pull-left"), new_post_path %></li>
+          <li><%= link_to fa_icon("eye", text:"Mes musiques", class:"text-muted pull-left has-text-white"), root_path, class: "has-text-white" %></li>
+          <li id="myBtn"><%= link_to fa_icon("plus-square", text:"Nouvelle musique", class:"text-muted pull-left has-text-white"), new_post_path, remote: true, class:"has-text-white" %></li>
+
+          <!-- The Modal -->
+          <div id="myModal" class="modal">
+            <!-- Modal content -->
+            <div class="modal-content">
+              <span class="close">&times;</span>
+              <%= render 'form' %>
+            </div>
+          </div>
+
         </ul>
       </div>
     </nav>

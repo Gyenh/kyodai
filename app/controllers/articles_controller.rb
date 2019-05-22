@@ -14,8 +14,7 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    @article = Article.new(article_params)
-    @article.user_id = current_user.id
+    @article = Article.new(article_params.merge(user_id: current_user.id))
     if @article.save
       redirect_to articles_path, notice: "L'article a bien été créé."
     else

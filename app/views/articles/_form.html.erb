@@ -1,37 +1,31 @@
-<div class='form_complete'>
+  <section class="section">
+    <div class="container has-text-centered">
+      <div class="container">
 
-  <div>
-    <% if @article.errors.any? %>
-    <ul>
-      <%= @article.errors.full_messages.each do |message| %>
-      <li><%= no comprende message %></li>
-      <% end %>
-    </ul>
-    <% end %>
-  </div>
+        <%= form_with(model: @article) do |f| %>
+          <% if @article.errors.any? %>
+            <ul>
+              <%= @article.errors.full_messages.each do |message| %>
+              <li><%= no comprende message %></li>
+              <% end %>
+            </ul>
+          <% end %>
+          <div>
+            <%= f.text_field :title, placeholder: "Mets ton titre ici, poto !" %>
+          </div>
 
-  <div class='form_for'>
+          <div>
+            <%= f.cktext_area :body, rows: 25 %>
+          </div>
 
-    <%= form_with(model: @article, local: true) do |f| %>
+          <div>
+            <%= f.submit "Publier l'article" %>
+            <%= link_to 'Retour', articles_path, remote: true %>
+          </div>
+          <% end %>
+        </div>
 
-    <div class='a_supprimer'>
-      <%= f.label "Prenez des liens Google pour les images, merci !" %>
+      </div>
     </div>
+  </section>
 
-    <div>
-      <%= f.text_field :title, placeholder: "Mets ton titre ici, poto !" %>
-    </div>
-
-    <div>
-      <%= f.cktext_area :body, rows: 25 %>
-    </div>
-
-    <div>
-      <%= f.submit 'Créé l\'article' %>
-      <%= link_to "Retour", articles_path %>
-    </div>
-    <% end %>
-
-  </div>
-
-</div>

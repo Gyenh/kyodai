@@ -1,31 +1,33 @@
-  <section class="section">
-    <div class="container has-text-centered">
-      <div class="container">
-
-        <%= form_with(model: @article) do |f| %>
-          <% if @article.errors.any? %>
-            <ul>
-              <%= @article.errors.full_messages.each do |message| %>
-              <li><%= no comprende message %></li>
-              <% end %>
-            </ul>
+<div class="container">
+  <div class="column is-8 is-offset-2">
+    <%= form_with(model: @article) do |f| %>
+      <% if @article.errors.any? %>
+        <ul>
+          <%= @article.errors.full_messages.each do |message| %>
+          <li><%= no comprende message %></li>
           <% end %>
-          <div>
-            <%= f.text_field :title, placeholder: "Mets ton titre ici, poto !" %>
-          </div>
-
-          <div>
-            <%= f.cktext_area :body, rows: 25 %>
-          </div>
-
-          <div>
-            <%= f.submit "Publier l'article" %>
-            <%= link_to 'Retour', articles_path, remote: true %>
-          </div>
-          <% end %>
-        </div>
-
+        </ul>
+      <% end %>
+    <div class="field">
+      <div class="control">
+        <%= f.text_field :title, autofocus: true, class: "input is-primary is-large", placeholder: "Mets ton titre ici, poto !" %>
       </div>
     </div>
-  </section>
 
+    <div class="field">
+      <div class="control">
+        <%= f.cktext_area :body, rows: 25 %>
+      </div>
+    </div>
+
+    <div class="level">
+      <div class="level-left">
+        <%= f.button fa_icon("share", text:"Partager mon article",class:"text-muted pull-left"), class:"button is-primary" %>
+      </div>
+      <div class="level-right">
+        <%= link_to fa_icon("undo", text:"Retour aux articles",class:"text-muted pull-left"), articles_path, class:"button" %>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>

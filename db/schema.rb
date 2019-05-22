@@ -20,7 +20,8 @@ ActiveRecord::Schema.define(version: 2019_05_12_192931) do
     t.text "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id"
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_articles_on_user_id"
   end
 
   create_table "ckeditor_assets", force: :cascade do |t|
@@ -79,5 +80,6 @@ ActiveRecord::Schema.define(version: 2019_05_12_192931) do
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
+  add_foreign_key "articles", "users"
   add_foreign_key "posts", "users"
 end

@@ -83,3 +83,9 @@ production:
   database: kyodai_production
   username: kyodai
   password: <%= ENV['KYODAI_DATABASE_PASSWORD'] %>
+
+staging:
+  <<: *default
+  database: kyodai_staging
+  username: kyodai
+  password: <%= ENV['KYODAI_DATABASE_PASSWORD'] %>

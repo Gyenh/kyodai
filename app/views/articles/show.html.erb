@@ -1,16 +1,28 @@
-<section class="hero is-primary is-bold">
-  <div class="hero-body">
-    <h1 class="title has-text-centered"><%= @article.title.html_safe %></h1>
-      <div class="section">
-        <%=@article.body.html_safe%>
+<section class="articles">
+  <div class="column is-10 is-offset-1">
+    <!-- START ARTICLE -->
+    <div class="card article">
+      <div class="card-content">
+        <div class="media">
+          <div class="media-content has-text-centered">
+            <p class="title article-title"><%= @article.title.html_safe %></p>
+              <div class="tags has-addons level-item">
+                <% if user_signed_in? && @article.user_id == current_user.id %>
+                <%= link_to "Editer", edit_article_path(@article), class: "tag is-rounded"%>
+                <%= link_to "Supprimer", article_path(@article), method: :delete, data: { confirm: "Are you sure ?"}, class:"tag is-rounded is-danger"%>
+                <% end %>
+              </div>
+            </div>
+        </div>
+        <div class="content article-body">
+          <%=@article.body.html_safe%>
+        </div>
       </div>
-
-      <% if user_signed_in? && @article.user_id == current_user.id %>
-        <%= link_to "Editer", edit_article_path(@article), class:"button" %>
-
-        <%= link_to "Supprimer", article_path(@article), method: :delete, data: { confirm: "Are you sure ?"}, class:"button is-danger" %>
-      <% end %>
-
+    <footer class="card-footer">
+      <p class="card-footer-item"><%= @article.user.username%></p>
+      <p class="card-footer-item"><%= @article.created_at.strftime("Posté le %d/%m/%Y")%>
+    </footer>
     </div>
+    <!-- END ARTICLE -->
   </div>
 </section>
